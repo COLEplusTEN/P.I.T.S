@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.Optional;
@@ -70,7 +69,8 @@ public class MainController implements Initializable{
                 new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
                 new Item("Sauce","Can",0.0, 0.0,15.35, 15),
                 new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20)
+                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
+                new Item("Sandip","Weight",1.1,1.1,1.1,33)
         );
 
 
