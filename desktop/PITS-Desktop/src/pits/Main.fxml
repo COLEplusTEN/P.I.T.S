@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pits.MainController">
    <top>
       <HBox prefHeight="59.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,14 +32,14 @@
       </HBox>
    </top>
    <center>
-      <TableView fx:id="myTable" prefHeight="552.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="myTable" maxWidth="759.0" minWidth="759.0" prefHeight="552.0" prefWidth="759.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colName" maxWidth="212.0" minWidth="212.0" prefWidth="212.0" text="Name" />
-          <TableColumn fx:id="colUnit" prefWidth="130.0" text="Unit" />
-           <TableColumn fx:id="colWalmartHyvee" prefWidth="120.0" text="Walmart/Hyvee" />
-           <TableColumn fx:id="colUSFoods" prefWidth="100.0" text="USFoods" />
-           <TableColumn fx:id="colRoma" prefWidth="100.0" text="Roma" />
-           <TableColumn fx:id="colCount" prefWidth="97.0" text="Count" />
+          <TableColumn fx:id="colUnit" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Unit" />
+           <TableColumn fx:id="colWalmartHyvee" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Walmart/Hyvee" />
+           <TableColumn fx:id="colUSFoods" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="USFoods" />
+           <TableColumn fx:id="colRoma" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Roma" />
+           <TableColumn fx:id="colCount" maxWidth="97.0" minWidth="97.0" prefWidth="97.0" text="Count" />
         </columns>
       </TableView>
    </center>
