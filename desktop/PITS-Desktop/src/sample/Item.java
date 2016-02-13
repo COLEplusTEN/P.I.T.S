@@ -1,7 +1,6 @@
-package pits;
+package sample;
 
 import javafx.beans.property.*;
-import javafx.collections.ObservableList;
 
 /**
  * Created by Eric on 2/7/2016.
@@ -71,5 +70,4 @@ public class Item {
     public void setRoma(double roma) {
         this.roma.set(roma);
     }
-
 }
