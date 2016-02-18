@@ -7,10 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/AddItem.fxml" afterPath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/AddItem.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/Main.fxml" afterPath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pits/AddItem.fxml" afterPath="$PROJECT_DIR$/src/pits/AddItem.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pits/EventEntity.java" afterPath="$PROJECT_DIR$/src/pits/EventEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pits/Main.fxml" afterPath="$PROJECT_DIR$/src/pits/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pits/Main.java" afterPath="$PROJECT_DIR$/src/pits/Main.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -781,7 +777,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455766456618</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finally, can put data in Kinvey&#10;">
+      <created>1455772791968</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1455772791968</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -836,7 +838,8 @@
     <MESSAGE value="This is an auto test" />
     <MESSAGE value="changed the height... so that she will be able to see everything without scrolling" />
     <MESSAGE value="just some edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="just some edits" />
+    <MESSAGE value="Finally, can put data in Kinvey&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally, can put data in Kinvey&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
