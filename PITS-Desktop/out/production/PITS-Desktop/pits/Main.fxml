@@ -32,21 +32,21 @@
       </HBox>
    </top>
    <center>
-      <TableView fx:id="myTable" maxWidth="759.0" minWidth="759.0" prefHeight="552.0" prefWidth="759.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="myTable" maxWidth="800.0" minWidth="759.0" prefHeight="501.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colName" maxWidth="212.0" minWidth="212.0" prefWidth="212.0" text="Name" />
           <TableColumn fx:id="colUnit" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Unit" />
-           <TableColumn fx:id="colWalmartHyvee" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Walmart/Hyvee" />
-           <TableColumn fx:id="colUSFoods" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="USFoods" />
-           <TableColumn fx:id="colRoma" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Roma" />
-           <TableColumn fx:id="colCount" maxWidth="97.0" minWidth="97.0" prefWidth="97.0" text="Count" />
+           <TableColumn fx:id="colWalmartHyvee" maxWidth="146.0" minWidth="120.0" prefWidth="146.0" text="Walmart/Hyvee" />
+           <TableColumn fx:id="colUSFoods" maxWidth="101.0" minWidth="83.0" prefWidth="101.0" text="USFoods" />
+           <TableColumn fx:id="colRoma" maxWidth="103.0" minWidth="85.0" prefWidth="99.0" text="Roma" />
+           <TableColumn fx:id="colCount" maxWidth="106.0" minWidth="85.0" prefWidth="106.0" text="Count" />
         </columns>
       </TableView>
    </center>
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addItem" mnemonicParsing="false" onAction="#addItemClick" prefHeight="25.0" prefWidth="112.0" text="Add new item">
+            <Button fx:id="addItem" mnemonicParsing="false" onAction="#addItemClick" prefHeight="31.0" prefWidth="120.0" text="Add new item">
                <HBox.margin>
                   <Insets top="35.0" />
                </HBox.margin>
@@ -64,7 +64,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <left>
-      <Region prefHeight="501.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="501.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <Region prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />

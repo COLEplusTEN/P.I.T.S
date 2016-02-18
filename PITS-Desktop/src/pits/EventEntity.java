@@ -8,6 +8,8 @@ import com.kinvey.java.model.KinveyMetaData;
  * Created by sandi on 2/13/2016.
  */
 public class EventEntity extends GenericJson {
+
+
     @Key("_id")
     private String id;
     @Key
@@ -22,11 +24,12 @@ public class EventEntity extends GenericJson {
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
     public EventEntity(){}  //GenericJson classes must have a public empty constructor
 
-    public void setName(String name) {
-        this.name = name;
+
+    public String getId() {
+        return id;
     }
 
-    public void setAddress(String address) {
-       //
+    public void setId(String id) {
+        this.id = id;
     }
 }
