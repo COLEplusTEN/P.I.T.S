@@ -23,6 +23,14 @@ public class Location extends GenericJson {
         @Key
         private String Zip;
         public Address(){} //GenericJson classes must have a public empty constructor
+
+        public String getAddress(){
+            return Address;
+        }
+
+        public void setAddress(String address){
+            this.Address=address;
+        }
     }
 
 

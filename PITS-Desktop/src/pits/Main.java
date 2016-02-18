@@ -95,10 +95,6 @@ public class Main extends Application {
         beef.put("walmart/Hyvee","12.24");
 
 
-
-
-
-
        // this will create a collection k=in kinvey
         AppData<EventEntity> myevents = mKinveyClient.appData("eventsCollection",EventEntity.class);
         try{
@@ -112,6 +108,24 @@ public class Main extends Application {
         }catch (IOException e){
             System.out.println("Couldn't save! -> " + e);
         }
+
+
+        /**
+         * this also work:
+         * basically its the same thing :::
+         * */
+        //another test from the kivey website:
+        //The EventEntity class is defined above
+        EventEntity event = new EventEntity();
+        event.setName("Launch Party");
+        //  event.setAddress("Kinvey HQ");
+        AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
+        try{
+            EventEntity result = myevents0.saveBlocking(event).execute();
+        }catch (IOException e){
+            System.out.println("Couldn't save! -> " + e);
+        }
+
 
 
 
