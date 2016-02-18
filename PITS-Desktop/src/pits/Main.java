@@ -127,8 +127,22 @@ public class Main extends Application {
         }
 
 
+        /*
+        * fetching data from kinvey
+        * */
 
-
+        //The EventEntity class is defined above
+        //The EventEntity class is defined above
+        EventEntity event000 = new EventEntity();
+        AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
+        try{
+            EventEntity result = myEvents.getEntityBlocking("56c5ee33bc050ff87903a15a").execute();
+            String tempResult = result.getName();
+            System.out.println(result);
+            System.out.println(tempResult);
+        }catch (IOException e){
+            System.out.println("Couldn't get! -> " + e);
+        }
 
         launch(args);
 
