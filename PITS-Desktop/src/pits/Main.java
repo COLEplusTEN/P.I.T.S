@@ -63,85 +63,99 @@ public class Main extends Application {
         //The EventEntity class is defined above
 
 
-        // first row
-        EventEntity haha = new EventEntity();
-        haha.setId("haha");
-        haha.set("dinner","this is a pizza");
-        haha.set("members","Eric,Dakota, Kyle, COleten, Jerry, Sandip");
-
-
-        // second row
-        EventEntity pepperoni = new EventEntity();
-        pepperoni.setId("pepperoni");
-        pepperoni.put("unit","Package");
-        pepperoni.put("walmart/Hyvee","13.44");
-
-        // second row
-        EventEntity sauce = new EventEntity();
-        sauce.setId("sauce");
-        sauce.put("unit","can");
-        sauce.put("walmart/Hyvee","0.0");
-
-        // second row
-        EventEntity blackOlives = new EventEntity();
-        blackOlives.setId("blackOlives");
-        blackOlives.put("unit","package");
-        blackOlives.put("walmart/Hyvee","12.34");
-
-        // second row
-        EventEntity beef = new EventEntity();
-        beef.setId("beef");
-        beef.put("unit","we are testing");
-        beef.put("walmart/Hyvee","12.24");
-
-
-       // this will create a collection k=in kinvey
-        AppData<EventEntity> myevents = mKinveyClient.appData("eventsCollection",EventEntity.class);
         try{
 
-            EventEntity result1 = myevents.saveBlocking(haha).execute();
-            EventEntity result2 = myevents.saveBlocking(pepperoni).execute();
-            EventEntity result3 = myevents.saveBlocking(sauce).execute();
-            EventEntity result4 = myevents.saveBlocking(blackOlives).execute();
-            EventEntity result5 = myevents.saveBlocking(beef).execute();
 
-        }catch (IOException e){
-            System.out.println("Couldn't save! -> " + e);
-        }
+            // second row
+            EventEntity pepperoni = new EventEntity();
+            pepperoni.setId("pepperoni");
+            pepperoni.put("unit","Package");
+            pepperoni.put("walmart/Hyvee","13.44");
+            pepperoni.put("usFoods","13.44");
+            pepperoni.put("roma","13.44");
+            pepperoni.put("count","13.44");
+
+            // second row
+            EventEntity sauce = new EventEntity();
+            sauce.setId("sauce");
+            sauce.put("unit","can");
+            sauce.put("walmart/Hyvee","0.0");
+            sauce.put("usFoods","13.44");
+            sauce.put("roma","13.44");
+            sauce.put("count","13.44");
+
+            // second row
+            EventEntity blackOlives = new EventEntity();
+            blackOlives.setId("blackOlives");
+            blackOlives.put("unit","package");
+            blackOlives.put("walmart/Hyvee","12.34");
+            blackOlives.put("usFoods","13.44");
+            blackOlives.put("roma","13.44");
+            blackOlives.put("count","13.44");
+
+            // second row
+            EventEntity beef = new EventEntity();
+            beef.setId("beef");
+            beef.put("unit","we are testing");
+            beef.put("walmart/Hyvee","12.24");
+            beef.put("usFoods","13.44");
+            beef.put("roma","13.44");
+            beef.put("count","13.44");
 
 
-        /**
-         * this also work:
-         * basically its the same thing :::
-         * */
-        //another test from the kivey website:
-        //The EventEntity class is defined above
-        EventEntity event = new EventEntity();
-        event.setName("Launch Party");
-        //  event.setAddress("Kinvey HQ");
-        AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
-        try{
-            EventEntity result = myevents0.saveBlocking(event).execute();
-        }catch (IOException e){
-            System.out.println("Couldn't save! -> " + e);
-        }
+            // this will create a collection k=in kinvey
+            AppData<EventEntity> myevents = mKinveyClient.appData("eventsCollection",EventEntity.class);
+            try{
+
+                EventEntity result2 = myevents.saveBlocking(pepperoni).execute();
+                EventEntity result3 = myevents.saveBlocking(sauce).execute();
+                EventEntity result4 = myevents.saveBlocking(blackOlives).execute();
+                EventEntity result5 = myevents.saveBlocking(beef).execute();
+
+            }catch (IOException e){
+                System.out.println("Couldn't save! -> " + e);
+            }
+
+
+            /**
+             * this also work:
+             * basically its the same thing :::
+             * */
+            //another test from the kivey website:
+            //The EventEntity class is defined above
+            EventEntity event = new EventEntity();
+            event.setName("Launch Party");
+            //  event.setAddress("Kinvey HQ");
+            AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
+            try{
+                EventEntity result = myevents0.saveBlocking(event).execute();
+            }catch (IOException e){
+                System.out.println("Couldn't save! -> " + e);
+            }
 
 
         /*
         * fetching data from kinvey
         * */
 
-        //The EventEntity class is defined above
-        //The EventEntity class is defined above
-        EventEntity event000 = new EventEntity();
-        AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
-        try{
-            EventEntity result = myEvents.getEntityBlocking("56c5ee33bc050ff87903a15a").execute();
-            String tempResult = result.getName();
-            System.out.println(result);
-            System.out.println(tempResult);
-        }catch (IOException e){
-            System.out.println("Couldn't get! -> " + e);
+            //The EventEntity class is defined above
+            //The EventEntity class is defined above
+            EventEntity event000 = new EventEntity();
+            AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
+            try{
+                EventEntity result = myEvents.getEntityBlocking("sauce").execute();
+                String tempResult = result.getName();
+                System.out.println(result);
+                System.out.println(tempResult);
+            }catch (IOException e){
+                System.out.println("Couldn't get! -> " + e);
+            }
+
+
+        }
+
+        catch(Exception e){
+            System.out.println("Some problem with Kinvey");
         }
 
         launch(args);
