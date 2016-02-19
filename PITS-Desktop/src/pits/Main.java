@@ -144,9 +144,14 @@ public class Main extends Application {
             AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
             try{
                 EventEntity result = myEvents.getEntityBlocking("sauce").execute();
-                String tempResult = result.getName();
-                System.out.println(result);
-                System.out.println(tempResult);
+                System.out.println();
+                System.out.println("We are printing the result here:");
+                System.out.println("Printing the ID: " + result.getId());
+               //  System.out.println(result.values().toArray().toString());
+               // System.out.println(result);
+              //  System.out.println(tempResult);
+                System.out.println("This is name" + result.getName());
+                System.out.println(result.getUnit());
             }catch (IOException e){
                 System.out.println("Couldn't get! -> " + e);
             }

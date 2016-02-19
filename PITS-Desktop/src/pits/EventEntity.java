@@ -13,6 +13,8 @@ public class EventEntity extends GenericJson {
     @Key("_id")
     private String id;
     @Key
+    private String unit;
+    @Key
     private String name;
     @Key
     private String location;
@@ -29,7 +31,8 @@ public class EventEntity extends GenericJson {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id)
+    {
         this.id = id;
     }
 
@@ -40,6 +43,19 @@ public class EventEntity extends GenericJson {
     public void setName(String name){
         this.name=name;
     }
+
+
+    public String getUnit(){
+        return unit;
+    }
+
+    public void setUnit(String unit){
+        this.unit=unit;
+    }
+
+
+
+
 
 
 }
