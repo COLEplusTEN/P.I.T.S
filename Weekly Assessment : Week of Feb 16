@@ -31,6 +31,7 @@ Activity: Continued development on JavaFX application. Made it possible to add i
 
 Milestones for next week:
 •	Make the UML Class Diagram
-•	Make IOs app able to add items to database and fetch data back from the database
+•	Make IOs app able to update item's count to the database
 •	Make update item button on the Desktop UI so that client can update items from the desktop app
-•	
+•	Make Scan Gun to be able to connect to our app.
+
