@@ -6,9 +6,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -18,7 +23,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable{
 
     @FXML
-    TableView<Item> myTable;
+    TableView<EventEntity> myTable;
     @FXML
     TableColumn colName;
     @FXML
@@ -35,7 +40,8 @@ public class MainController implements Initializable{
     Button addItem;
 
 
-    public ObservableList<Item> list;
+    public ObservableList<EventEntity> list;
+    AppData<EventEntity> myEvents;
 
     public MainController()
     {
@@ -44,64 +50,25 @@ public class MainController implements Initializable{
     public void configureTable()
     {
 
-        AppData<EventEntity> myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        /**
+         * set up columns and pull from database*/
+        colName.setCellValueFactory(new PropertyValueFactory<EventEntity, String>("id"));
+        colUnit.setCellValueFactory(new PropertyValueFactory<EventEntity, String>("unit"));
+        colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("walmartHyvee"));
+        colUSFoods.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("usFoods"));
+        colRoma.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("roma"));
+        colCount.setCellValueFactory(new PropertyValueFactory<EventEntity, Integer>("count"));
 
-        try {
-            EventEntity[] results = myEvents.getBlocking().execute();
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            for(EventEntity item: results)
-            {
-                System.out.println(item.getId());
-                System.out.println(item.getUnit());
-                System.out.println(item.getWalmartHyvee());
-                System.out.println(item.getUsFoods());
-                System.out.println(item.getRoma());
-
-            }
-        } catch (IOException e) {
-            System.out.println("Couldn't get! -> "+e);
-        }
-        colName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
-        colUnit.setCellValueFactory(new PropertyValueFactory<Item, String>("unit"));
-        colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<Item, Double>("walmartHyvee"));
-        colUSFoods.setCellValueFactory(new PropertyValueFactory<Item, Double>("usfoods"));
-        colRoma.setCellValueFactory(new PropertyValueFactory<Item, Double>("roma"));
-        colCount.setCellValueFactory(new PropertyValueFactory<Item, Integer>("count"));
-
-        list = FXCollections.observableArrayList(
-                new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
-                new Item("Sauce","Can",0.0, 0.0,15.35, 15),
-                new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
-                new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
-                new Item("Sauce","Can",0.0, 0.0,15.35, 15),
-                new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
-                new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
-                new Item("Sauce","Can",0.0, 0.0,15.35, 15),
-                new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
-                new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
-                new Item("Sauce","Can",0.0, 0.0,15.35, 15),
-                new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
-                new Item("Pepperoni","Package", 13.44, 11111.0, 9999.0, 19),
-                new Item("Sauce","Can",0.0, 0.0,15.35, 15),
-                new Item("Black Olives","Package",0.0, 5.33, 0.0, 44),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20),
-                new Item("Beef","Pounds",5.39,5.24,0.0, 20)
-
-        );
-
-
-        updateTable(list);
+        updateTable();
 
 
     }
 
     public void addItemClick() throws Exception {
-        //AddItem a = new AddItem();
-        Dialog<Item> dialog = new Dialog<>();
+        /**
+         * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
+         * when they press ok, validate input and add into kinvey*/
+        Dialog<EventEntity> dialog = new Dialog<>();
         dialog.setTitle("Add New Item");
         dialog.setResizable(false);
 
@@ -137,9 +104,9 @@ public class MainController implements Initializable{
 
             if(button == buttonOK)
             {
-                Double walmartHyvee = 0.0;
-                Double USFoods = 0.0;
-                Double roma = 0.0;
+                String walmartHyvee = "0.0";
+                String USFoods = "0.0";
+                String roma = "0.0";
 
                 if(!textName.getText().equals("") && !textUnit.getText().equals(""))
                 {
@@ -154,20 +121,30 @@ public class MainController implements Initializable{
                 if(!textWH.getText().equals(""))
                 {
                     if(isNumeric(textWH.getText()))
-                        walmartHyvee=Double.valueOf(textWH.getText());
+                        walmartHyvee = textWH.getText();
+                        //walmartHyvee=Double.valueOf(textWH.getText());
                 }
                 if(!textUSFoods.getText().equals(""))
                 {
                     if(isNumeric(textUSFoods.getText()))
-                        USFoods=Double.valueOf(textUSFoods.getText());
+                        USFoods = textUSFoods.getText();
+                        //USFoods=Double.valueOf(textUSFoods.getText());
                 }
                 if(!textRoma.getText().equals(""))
                 {
                     if(isNumeric(textRoma.getText()))
-                        roma=Double.valueOf(textRoma.getText());
+                        roma = textRoma.getText();
+                        //roma=Double.valueOf(textRoma.getText());
                 }
 
-                Item newItem = new Item(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,0);
+                EventEntity newItem = new EventEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                try{
+                    EventEntity result = myEvents.saveBlocking(newItem).execute();
+                }catch (IOException e){
+                    System.out.println("Couldn't save new item! -> " + e);
+                }
+
+
 
                 return newItem;
             }
@@ -175,15 +152,16 @@ public class MainController implements Initializable{
             return null;
         });
 
-        Optional<Item> result = dialog.showAndWait();
+        Optional<EventEntity> result = dialog.showAndWait();
         if(result.isPresent())
         {
             System.out.println("Result is present");
             list.add(result.get());
-            updateTable(list);
+            updateTable();
         }
     }
 
+    /** Make sure that the values in the addItem method are valid numbers*/
     public boolean isNumeric(String str)
     {
         try
@@ -197,9 +175,29 @@ public class MainController implements Initializable{
         return true;
     }
 
-    public void updateTable(ObservableList<Item> myList)
+    public void updateTable()
     {
-        myTable.setItems(myList);
+        myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        list = FXCollections.observableArrayList();
+
+        try {
+            EventEntity[] results = myEvents.getBlocking().execute();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            for(EventEntity item: results)
+            {
+                list.add(item);
+                System.out.println(item.getId());
+                System.out.println(item.getUnit());
+                System.out.println(item.getWalmartHyvee());
+                System.out.println(item.getUsFoods());
+                System.out.println(item.getRoma());
+                System.out.println("---------------------");
+            }
+        } catch (IOException e) {
+            System.out.println("Couldn't get! -> "+e);
+        }
+
+        myTable.setItems(list);
 
     }
 
