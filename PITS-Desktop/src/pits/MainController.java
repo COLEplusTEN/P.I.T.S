@@ -1,5 +1,6 @@
 package pits;
 
+import com.kinvey.nativejava.AppData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -42,6 +44,23 @@ public class MainController implements Initializable{
     public void configureTable()
     {
 
+        AppData<EventEntity> myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+
+        try {
+            EventEntity[] results = myEvents.getBlocking().execute();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            for(EventEntity item: results)
+            {
+                System.out.println(item.getId());
+                System.out.println(item.getUnit());
+                System.out.println(item.getWalmartHyvee());
+                System.out.println(item.getUsFoods());
+                System.out.println(item.getRoma());
+
+            }
+        } catch (IOException e) {
+            System.out.println("Couldn't get! -> "+e);
+        }
         colName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
         colUnit.setCellValueFactory(new PropertyValueFactory<Item, String>("unit"));
         colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<Item, Double>("walmartHyvee"));

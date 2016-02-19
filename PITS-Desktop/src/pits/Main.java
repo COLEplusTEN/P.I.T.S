@@ -19,14 +19,15 @@ Master Secret: 81181f297d044117a537c53378eae68d
  */
 
 
+
 public class Main extends Application {
 
     public static final String appKey = "kid_ZyBaA-MgAe";
     public static final String mastersecret = "81181f297d044117a537c53378eae68d";
+    public static Client mKinveyClient;
 
 
 
-    final Client mKinveyClient = new Client.Builder("kid_ZyBaA-MgAe", "4e43176fdfe14d44878492851d93385f").build();
 
 
     @Override
@@ -47,7 +48,7 @@ public class Main extends Application {
         * It has key and app id for our kinvey
         * */
 
-        Client mKinveyClient = new Client.Builder("kid_ZyBaA-MgAe", "4e43176fdfe14d44878492851d93385f").build();
+        mKinveyClient = new Client.Builder("kid_ZyBaA-MgAe", "4e43176fdfe14d44878492851d93385f").build();
         try{
             mKinveyClient.user().loginBlocking("kid_ZyBaA-MgAe", "81181f297d044117a537c53378eae68d").execute();
             System.out.println("Client logged in -> " + mKinveyClient.user().isUserLoggedIn());
@@ -123,15 +124,15 @@ public class Main extends Application {
              * */
             //another test from the kivey website:
             //The EventEntity class is defined above
-            EventEntity event = new EventEntity();
-            event.setName("Launch Party");
-            //  event.setAddress("Kinvey HQ");
-            AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
-            try{
-                EventEntity result = myevents0.saveBlocking(event).execute();
-            }catch (IOException e){
-                System.out.println("Couldn't save! -> " + e);
-            }
+//            EventEntity event = new EventEntity();
+//            event.setName("Launch Party");
+//            //  event.setAddress("Kinvey HQ");
+//            AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
+//            try{
+//                EventEntity result = myevents0.saveBlocking(event).execute();
+//            }catch (IOException e){
+//                System.out.println("Couldn't save! -> " + e);
+//            }
 
 
         /*
@@ -142,39 +143,39 @@ public class Main extends Application {
             //The EventEntity class is defined above
             //The EventEntity class is defined above
             EventEntity event000 = new EventEntity();
-            AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
-            try{
-
-                   for(String s: items){
-                       EventEntity result = myEvents.getEntityBlocking(s).execute();
-                       System.out.println();
-                       System.out.println("We are printing the result here:");
-                       System.out.println("Printing the ID: " + result.getId());
-                       //  System.out.println(result.values().toArray().toString());
-                       // System.out.println(result);
-                       //  System.out.println(tempResult);
-
-                       System.out.println("Unit");
-                       System.out.println(result.getUnit());
-                       System.out.println();
-                       System.out.println("walmartHyvee");
-                       System.out.println(result.getWalmartHyvee());
-                       // more
-                       System.out.println("usfoods");
-                       System.out.println(result.getUsFoods());
-                       //more
-                       System.out.println("roma");
-                       System.out.println(result.getRoma());
-                       //more
-                       System.out.println("count");
-                       System.out.println(result.getCount());
-
-                   }
-
-
-            }catch (IOException e){
-                System.out.println("Couldn't get! -> " + e);
-            }
+//            AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
+//            try{
+//
+//                   for(String s: items){
+//                       EventEntity result = myEvents.getEntityBlocking(s).execute();
+//                       System.out.println();
+//                       System.out.println("We are printing the result here:");
+//                       System.out.println("Printing the ID: " + result.getId());
+//                       //  System.out.println(result.values().toArray().toString());
+//                       // System.out.println(result);
+//                       //  System.out.println(tempResult);
+//
+//                       System.out.println("Unit");
+//                       System.out.println(result.getUnit());
+//                       System.out.println();
+//                       System.out.println("walmartHyvee");
+//                       System.out.println(result.getWalmartHyvee());
+//                       // more
+//                       System.out.println("usfoods");
+//                       System.out.println(result.getUsFoods());
+//                       //more
+//                       System.out.println("roma");
+//                       System.out.println(result.getRoma());
+//                       //more
+//                       System.out.println("count");
+//                       System.out.println(result.getCount());
+//
+//                   }
+//
+//
+//            }catch (IOException e){
+//                System.out.println("Couldn't get! -> " + e);
+//            }
 
 
         }
