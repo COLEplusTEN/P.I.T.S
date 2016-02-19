@@ -66,7 +66,7 @@ public class Main extends Application {
 
         try{
 
-
+/*
             // second row
             EventEntity pepperoni = new EventEntity();
             pepperoni.setId("pepperoni");
@@ -115,7 +115,7 @@ public class Main extends Application {
 
             }catch (IOException e){
                 System.out.println("Couldn't save! -> " + e);
-            }
+            }*/
 
 
             /**
