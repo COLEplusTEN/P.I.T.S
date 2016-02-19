@@ -70,7 +70,7 @@ public class Main extends Application {
             EventEntity pepperoni = new EventEntity();
             pepperoni.setId("pepperoni");
             pepperoni.put("unit","Package");
-            pepperoni.put("walmart/Hyvee","13.44");
+            pepperoni.put("walmartHyvee","13.44");
             pepperoni.put("usFoods","13.44");
             pepperoni.put("roma","13.44");
             pepperoni.put("count","13.44");
@@ -79,7 +79,7 @@ public class Main extends Application {
             EventEntity sauce = new EventEntity();
             sauce.setId("sauce");
             sauce.put("unit","can");
-            sauce.put("walmart/Hyvee","0.0");
+            sauce.put("walmartHyvee","0.0");
             sauce.put("usFoods","13.44");
             sauce.put("roma","13.44");
             sauce.put("count","13.44");
@@ -88,7 +88,7 @@ public class Main extends Application {
             EventEntity blackOlives = new EventEntity();
             blackOlives.setId("blackOlives");
             blackOlives.put("unit","package");
-            blackOlives.put("walmart/Hyvee","12.34");
+            blackOlives.put("walmartHyvee","12.34");
             blackOlives.put("usFoods","13.44");
             blackOlives.put("roma","13.44");
             blackOlives.put("count","13.44");
@@ -97,7 +97,7 @@ public class Main extends Application {
             EventEntity beef = new EventEntity();
             beef.setId("beef");
             beef.put("unit","we are testing");
-            beef.put("walmart/Hyvee","12.24");
+            beef.put("walmartHyvee","12.24");
             beef.put("usFoods","13.44");
             beef.put("roma","13.44");
             beef.put("count","13.44");
@@ -137,21 +137,41 @@ public class Main extends Application {
         /*
         * fetching data from kinvey
         * */
+            String[] items = {"pepperoni","sauce","blackOlives","beef"};
 
             //The EventEntity class is defined above
             //The EventEntity class is defined above
             EventEntity event000 = new EventEntity();
             AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
             try{
-                EventEntity result = myEvents.getEntityBlocking("sauce").execute();
-                System.out.println();
-                System.out.println("We are printing the result here:");
-                System.out.println("Printing the ID: " + result.getId());
-               //  System.out.println(result.values().toArray().toString());
-               // System.out.println(result);
-              //  System.out.println(tempResult);
-                System.out.println("This is name" + result.getName());
-                System.out.println(result.getUnit());
+
+                   for(String s: items){
+                       EventEntity result = myEvents.getEntityBlocking(s).execute();
+                       System.out.println();
+                       System.out.println("We are printing the result here:");
+                       System.out.println("Printing the ID: " + result.getId());
+                       //  System.out.println(result.values().toArray().toString());
+                       // System.out.println(result);
+                       //  System.out.println(tempResult);
+
+                       System.out.println("Unit");
+                       System.out.println(result.getUnit());
+                       System.out.println();
+                       System.out.println("walmartHyvee");
+                       System.out.println(result.getWalmartHyvee());
+                       // more
+                       System.out.println("usfoods");
+                       System.out.println(result.getUsFoods());
+                       //more
+                       System.out.println("roma");
+                       System.out.println(result.getRoma());
+                       //more
+                       System.out.println("count");
+                       System.out.println(result.getCount());
+
+                   }
+
+
             }catch (IOException e){
                 System.out.println("Couldn't get! -> " + e);
             }

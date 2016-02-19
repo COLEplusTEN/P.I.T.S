@@ -15,6 +15,14 @@ public class EventEntity extends GenericJson {
     @Key
     private String unit;
     @Key
+    private String walmartHyvee;
+    @Key
+    private String usFoods;
+    @Key
+    private String roma;
+    @Key
+    private String count;
+    @Key
     private String name;
     @Key
     private String location;
@@ -54,8 +62,35 @@ public class EventEntity extends GenericJson {
     }
 
 
+    public String getWalmartHyvee() {
+        return walmartHyvee;
+    }
 
+    public void setWalmartHyvee(String walmartHyvee) {
+        this.walmartHyvee = walmartHyvee;
+    }
 
+    public String getUsFoods() {
+        return usFoods;
+    }
 
+    public void setUsFoods(String usFoods) {
+        this.usFoods = usFoods;
+    }
 
+    public String getRoma() {
+        return roma;
+    }
+
+    public void setRoma(String roma) {
+        this.roma = roma;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
 }
