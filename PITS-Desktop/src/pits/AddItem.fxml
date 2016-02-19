@@ -27,7 +27,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="addName" prefHeight="25.0" prefWidth="215.0">
+            <TextField fx:id="addName" onDragEntered="#display" onDragOver="#display" onMouseDragEntered="#display" onMouseDragExited="#display" onMouseDragOver="#display" prefHeight="25.0" prefWidth="215.0">
                <HBox.margin>
                   <Insets left="95.0" />
                </HBox.margin>
