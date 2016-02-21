@@ -19,7 +19,7 @@ Master Secret: 81181f297d044117a537c53378eae68d
 public class Main extends Application {
 
     public static final String appKey = "kid_ZyBaA-MgAe";
-    public static final String mastersecret = "81181f297d044117a537c53378eae68d";
+    public static final String masterSecret = "81181f297d044117a537c53378eae68d";
     public static Client mKinveyClient;
 
 

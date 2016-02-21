@@ -34,6 +34,7 @@ public class ItemEntity extends GenericJson {
     private KinveyMetaData meta; // Kinvey metadata, OPTIONAL
     @Key("_acl")
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
+
     public ItemEntity(){}  //GenericJson classes must have a public empty constructor
 
     public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count) {
