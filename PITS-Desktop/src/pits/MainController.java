@@ -4,8 +4,6 @@ import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -26,7 +23,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable{
 
     @FXML
-    TableView<EventEntity> myTable;
+    TableView<ItemEntity> myTable;
     @FXML
     TableColumn colName;
     @FXML
@@ -43,8 +40,8 @@ public class MainController implements Initializable{
     Button addItem;
 
 
-    public ObservableList<EventEntity> list;
-    AppData<EventEntity> myEvents;
+    public ObservableList<ItemEntity> list;
+    AppData<ItemEntity> myEvents;
 
 
 
@@ -61,12 +58,12 @@ public class MainController implements Initializable{
 
         /**
          * set up columns and pull from database*/
-        colName.setCellValueFactory(new PropertyValueFactory<EventEntity, String>("id"));
-        colUnit.setCellValueFactory(new PropertyValueFactory<EventEntity, String>("unit"));
-        colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("walmartHyvee"));
-        colUSFoods.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("usFoods"));
-        colRoma.setCellValueFactory(new PropertyValueFactory<EventEntity, Double>("roma"));
-        colCount.setCellValueFactory(new PropertyValueFactory<EventEntity, Integer>("count"));
+        colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+        colUnit.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("unit"));
+        colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("walmartHyvee"));
+        colUSFoods.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("usFoods"));
+        colRoma.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("roma"));
+        colCount.setCellValueFactory(new PropertyValueFactory<ItemEntity, Integer>("count"));
 
         updateTable();
 
@@ -76,7 +73,7 @@ public class MainController implements Initializable{
     // delete button clicked
     public void deleteItemClick() throws Exception{
         String eventId;
-        ObservableList<EventEntity> eventSelected, allEvents;
+        ObservableList<ItemEntity> eventSelected, allEvents;
 
         // all the items on the table
         allEvents = myTable.getItems();
@@ -88,9 +85,9 @@ public class MainController implements Initializable{
         eventSelected.forEach(allEvents::remove);
 
 
-        //The EventEntity class is defined above
-        EventEntity event = new EventEntity();
-        myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        //The ItemEntity class is defined above
+        ItemEntity event = new ItemEntity();
+        myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
         try{
             KinveyDeleteResponse result = myEvents.deleteBlocking(eventId).execute();
         }catch (IOException e){
@@ -105,7 +102,7 @@ public class MainController implements Initializable{
         /**
          * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
          * when they press ok, validate input and add into kinvey*/
-        Dialog<EventEntity> dialog = new Dialog<>();
+        Dialog<ItemEntity> dialog = new Dialog<>();
         dialog.setTitle("Add New Item");
         dialog.setResizable(false);
 
@@ -178,9 +175,9 @@ public class MainController implements Initializable{
                         //roma=Double.valueOf(textRoma.getText());
                 }
 
-                EventEntity newItem = new EventEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
                 try{
-                    EventEntity result = myEvents.saveBlocking(newItem).execute();
+                    ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
                     System.out.println("Couldn't save new item! -> " + e);
                 }
@@ -193,7 +190,7 @@ public class MainController implements Initializable{
             return null;
         });
 
-        Optional<EventEntity> result = dialog.showAndWait();
+        Optional<ItemEntity> result = dialog.showAndWait();
         if(result.isPresent())
         {
             System.out.println("Result is present");
@@ -219,13 +216,13 @@ public class MainController implements Initializable{
     public void updateTable()
     {
 
-        myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
         list = FXCollections.observableArrayList();
 
         try {
-            EventEntity[] results = myEvents.getBlocking().execute();
+            ItemEntity[] results = myEvents.getBlocking().execute();
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            for(EventEntity item: results)
+            for(ItemEntity item: results)
             {
                 list.add(item);
                 System.out.println(item.getId());

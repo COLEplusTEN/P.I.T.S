@@ -55,7 +55,7 @@
                   <Insets top="35.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#deleteItemClick" prefHeight="34.0" prefWidth="195.0" text="Delete Item" textFill="#db2c2c" textOverrun="CLIP">
+            <Button mnemonicParsing="false" onAction="#deleteItemClick" prefHeight="34.0" prefWidth="195.0" text="Delete Item" textFill="#db2c2c" textOverrun="CLIP" >
                <HBox.margin>
                   <Insets left="40.0" top="30.0" />
                </HBox.margin>

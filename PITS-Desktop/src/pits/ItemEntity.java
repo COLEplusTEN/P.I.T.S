@@ -14,7 +14,7 @@ import javafx.event.Event;
 /**
  * Created by sandi on 2/13/2016.
  */
-public class EventEntity extends GenericJson {
+public class ItemEntity extends GenericJson {
 
 
     @Key("_id")
@@ -34,9 +34,9 @@ public class EventEntity extends GenericJson {
     private KinveyMetaData meta; // Kinvey metadata, OPTIONAL
     @Key("_acl")
     private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
-    public EventEntity(){}  //GenericJson classes must have a public empty constructor
+    public ItemEntity(){}  //GenericJson classes must have a public empty constructor
 
-    public EventEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count) {
+    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count) {
         this.id = name;
         this.unit = unit;
         this.walmartHyvee = walmartHyvee;
@@ -45,7 +45,7 @@ public class EventEntity extends GenericJson {
         this.count = count;
     }
 
-    public EventEntity(String name){
+    public ItemEntity(String name){
         this.id=name;
     }
 

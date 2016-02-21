@@ -56,14 +56,14 @@ public class Main extends Application {
         /*
         * This query is for testing the table structure of Kinvey database
         * */
-        //The EventEntity class is defined above
+        //The ItemEntity class is defined above
 
 
         try{
 
 /*
             // second row
-            EventEntity pepperoni = new EventEntity();
+            ItemEntity pepperoni = new ItemEntity();
             pepperoni.setId("pepperoni");
             pepperoni.put("unit","Package");
             pepperoni.put("walmartHyvee","13.44");
@@ -72,7 +72,7 @@ public class Main extends Application {
             pepperoni.put("count","13.44");
 
             // second row
-            EventEntity sauce = new EventEntity();
+            ItemEntity sauce = new ItemEntity();
             sauce.setId("sauce");
             sauce.put("unit","can");
             sauce.put("walmartHyvee","0.0");
@@ -81,7 +81,7 @@ public class Main extends Application {
             sauce.put("count","13.44");
 
             // second row
-            EventEntity blackOlives = new EventEntity();
+            ItemEntity blackOlives = new ItemEntity();
             blackOlives.setId("blackOlives");
             blackOlives.put("unit","package");
             blackOlives.put("walmartHyvee","12.34");
@@ -90,7 +90,7 @@ public class Main extends Application {
             blackOlives.put("count","13.44");
 
             // second row
-            EventEntity beef = new EventEntity();
+            ItemEntity beef = new ItemEntity();
             beef.setId("beef");
             beef.put("unit","we are testing");
             beef.put("walmartHyvee","12.24");
@@ -100,13 +100,13 @@ public class Main extends Application {
 
 
             // this will create a collection k=in kinvey
-            AppData<EventEntity> myevents = mKinveyClient.appData("eventsCollection",EventEntity.class);
+            AppData<ItemEntity> myevents = mKinveyClient.appData("eventsCollection",ItemEntity.class);
             try{
 
-                EventEntity result2 = myevents.saveBlocking(pepperoni).execute();
-                EventEntity result3 = myevents.saveBlocking(sauce).execute();
-                EventEntity result4 = myevents.saveBlocking(blackOlives).execute();
-                EventEntity result5 = myevents.saveBlocking(beef).execute();
+                ItemEntity result2 = myevents.saveBlocking(pepperoni).execute();
+                ItemEntity result3 = myevents.saveBlocking(sauce).execute();
+                ItemEntity result4 = myevents.saveBlocking(blackOlives).execute();
+                ItemEntity result5 = myevents.saveBlocking(beef).execute();
 
             }catch (IOException e){
                 System.out.println("Couldn't save! -> " + e);
@@ -118,13 +118,13 @@ public class Main extends Application {
              * basically its the same thing :::
              * */
             //another test from the kivey website:
-            //The EventEntity class is defined above
-//            EventEntity event = new EventEntity();
+            //The ItemEntity class is defined above
+//            ItemEntity event = new ItemEntity();
 //            event.setName("Launch Party");
 //            //  event.setAddress("Kinvey HQ");
-//            AppData<EventEntity> myevents0 = mKinveyClient.appData("eventsCollection",EventEntity.class);
+//            AppData<ItemEntity> myevents0 = mKinveyClient.appData("eventsCollection",ItemEntity.class);
 //            try{
-//                EventEntity result = myevents0.saveBlocking(event).execute();
+//                ItemEntity result = myevents0.saveBlocking(event).execute();
 //            }catch (IOException e){
 //                System.out.println("Couldn't save! -> " + e);
 //            }
@@ -135,14 +135,14 @@ public class Main extends Application {
         * */
             String[] items = {"pepperoni","sauce","blackOlives","beef"};
 
-            //The EventEntity class is defined above
-            //The EventEntity class is defined above
-            EventEntity event000 = new EventEntity();
-//            AppData<EventEntity> myEvents = mKinveyClient.appData("eventsCollection", EventEntity.class);
+            //The ItemEntity class is defined above
+            //The ItemEntity class is defined above
+            ItemEntity event000 = new ItemEntity();
+//            AppData<ItemEntity> myEvents = mKinveyClient.appData("eventsCollection", ItemEntity.class);
 //            try{
 //
 //                   for(String s: items){
-//                       EventEntity result = myEvents.getEntityBlocking(s).execute();
+//                       ItemEntity result = myEvents.getEntityBlocking(s).execute();
 //                       System.out.println();
 //                       System.out.println("We are printing the result here:");
 //                       System.out.println("Printing the ID: " + result.getId());
