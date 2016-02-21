@@ -56,16 +56,7 @@ public class MainController implements Initializable{
 
     }
 
-    public void deleteButtonClicked(){
-
-
-    }
-
-
-
-
-
-    public void configureTable()
+     public void configureTable()
     {
 
         /**
@@ -84,29 +75,27 @@ public class MainController implements Initializable{
 
     // delete button clicked
     public void deleteItemClick() throws Exception{
-        ObservableList<EventEntity> eventSelecteed, allEvents;
+        String eventId;
+        ObservableList<EventEntity> eventSelected, allEvents;
+
         // all the items on the table
         allEvents = myTable.getItems();
         // the highlighted item
-        eventSelecteed = myTable.getSelectionModel().getSelectedItems();
+        eventSelected = myTable.getSelectionModel().getSelectedItems();
+        // we will be deting this id element from the database
+        eventId = eventSelected.get(0).getId();
         // this will remove the item
-        eventSelecteed.forEach(allEvents::remove);
+        eventSelected.forEach(allEvents::remove);
 
 
-/*
         //The EventEntity class is defined above
         EventEntity event = new EventEntity();
-        String eventId = event.getId();
-        AppData<KinveyDeleteResponse> myevents;
-        myevents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
         try{
-            KinveyDeleteResponse result = myevents.deleteBlocking(eventId).execute();
+            KinveyDeleteResponse result = myEvents.deleteBlocking(eventId).execute();
         }catch (IOException e){
             System.out.println("Couldn't delete! -> " + e);
         }
-*/
-
-
 
     }
 
