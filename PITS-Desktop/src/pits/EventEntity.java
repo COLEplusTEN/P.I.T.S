@@ -6,6 +6,10 @@ import com.kinvey.java.model.KinveyMetaData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.event.Event;
+
 
 /**
  * Created by sandi on 2/13/2016.
@@ -39,6 +43,10 @@ public class EventEntity extends GenericJson {
         this.usFoods = usfoods;
         this.roma = roma;
         this.count = count;
+    }
+
+    public EventEntity(String name){
+        this.id=name;
     }
 
     public String getId() {

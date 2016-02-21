@@ -1,8 +1,11 @@
 package pits;
 
+import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -43,10 +46,25 @@ public class MainController implements Initializable{
     public ObservableList<EventEntity> list;
     AppData<EventEntity> myEvents;
 
-    public MainController()
-    {
+
+
+
+    public MainController() {
+
+
+
 
     }
+
+    public void deleteButtonClicked(){
+
+
+    }
+
+
+
+
+
     public void configureTable()
     {
 
@@ -63,6 +81,35 @@ public class MainController implements Initializable{
 
 
     }
+
+    // delete button clicked
+    public void deleteItemClick() throws Exception{
+        ObservableList<EventEntity> eventSelecteed, allEvents;
+        // all the items on the table
+        allEvents = myTable.getItems();
+        // the highlighted item
+        eventSelecteed = myTable.getSelectionModel().getSelectedItems();
+        // this will remove the item
+        eventSelecteed.forEach(allEvents::remove);
+
+
+/*
+        //The EventEntity class is defined above
+        EventEntity event = new EventEntity();
+        String eventId = event.getId();
+        AppData<KinveyDeleteResponse> myevents;
+        myevents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
+        try{
+            KinveyDeleteResponse result = myevents.deleteBlocking(eventId).execute();
+        }catch (IOException e){
+            System.out.println("Couldn't delete! -> " + e);
+        }
+*/
+
+
+
+    }
+
 
     public void addItemClick() throws Exception {
         /**
@@ -99,6 +146,8 @@ public class MainController implements Initializable{
 
         ButtonType buttonOK = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(buttonOK);
+
+
 
         dialog.setResultConverter(button -> {
 
@@ -208,6 +257,9 @@ public class MainController implements Initializable{
         configureTable();
 
     }
+
+
+
 }
 
 

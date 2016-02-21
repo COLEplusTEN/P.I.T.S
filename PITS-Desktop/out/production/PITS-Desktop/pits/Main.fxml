@@ -49,12 +49,23 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addItem" mnemonicParsing="false" onAction="#addItemClick" prefHeight="31.0" prefWidth="120.0" text="Add new item">
+            <Button fx:id="addItem" mnemonicParsing="false" onAction="#addItemClick" prefHeight="31.0" prefWidth="220.0" text="Add new item">
                <HBox.margin>
                   <Insets top="35.0" />
                </HBox.margin>
             </Button>
-            <Region prefHeight="100.0" prefWidth="736.0" />
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="202.0" onAction="#deleteItemClick" text="Delete Item">
+               <HBox.margin>
+                  <Insets left="40.0" top="30.0" />
+               </HBox.margin>
+            </Button>
+            <Region nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="736.0" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding></Region>
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Calculate">
                <HBox.margin>
                   <Insets top="35.0" />

@@ -1,25 +1,20 @@
 package pits;
 
-import com.kinvey.java.Query;
-import com.kinvey.nativejava.AppData;
+
 import javafx.application.Application;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import com.kinvey.nativejava.Client;
 
 import java.io.IOException;
-
-
 /*
 App Id : kid_ZyBaA-MgAe
 App Secret: 4e43176fdfe14d44878492851d93385f
 Master Secret: 81181f297d044117a537c53378eae68d
  */
-
-
 
 public class Main extends Application {
 
@@ -38,21 +33,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1220, 850));
         primaryStage.setResizable(false);
         primaryStage.show();
-
-
-
-        primaryStage.setTitle("Sorting and Filtering");
-
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("PersonTable.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            Scene scene = new Scene(page);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
