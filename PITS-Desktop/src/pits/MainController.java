@@ -100,6 +100,7 @@ public class MainController implements Initializable{
     }
 
 
+    // this is for add new item
     public void addItemClick() throws Exception {
         /**
          * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
@@ -134,6 +135,8 @@ public class MainController implements Initializable{
         dialog.getDialogPane().setContent(grid);
 
         ButtonType buttonOK = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+
+
         dialog.getDialogPane().getButtonTypes().add(buttonOK);
 
 
@@ -215,6 +218,7 @@ public class MainController implements Initializable{
 
     public void updateTable()
     {
+
         myEvents = Main.mKinveyClient.appData("eventsCollection", EventEntity.class);
         list = FXCollections.observableArrayList();
 
