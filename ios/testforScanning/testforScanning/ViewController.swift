@@ -11,14 +11,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let store = KCSAppdataStore.storeWithOptions([
+        KCSStoreKeyCollectionName : "Events",
+        KCSStoreKeyCollectionTemplateClass : Food.self
+        ])
     @IBAction func submit(sender: AnyObject) {
        
         
         
-        let store = KCSAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName : "Events",
-            KCSStoreKeyCollectionTemplateClass : Food.self
-            ])
+        
         
         
         let food = Food()
@@ -43,6 +44,17 @@ class ViewController: UIViewController {
         )
         print("testforsdfsdf")
     }
+    store.loadObjectWithID (
+    event.entityId,
+    withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+    if errorOrNil == nil {
+    NSLog("successful reload: %@", objectsOrNil[0] as! NSObject) // event updated
+    } else {
+    NSLog("error occurred: %@", errorOrNil)
+    }
+    },
+    withProgressBlock: nil
+    )
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
