@@ -43,6 +43,7 @@ public class MainController implements Initializable{
 
     public ObservableList<ItemEntity> list;
     AppData<ItemEntity> myEvents;
+    ObservableList<ItemEntity> eventSelected, allEvents;
 
     //Search bar :
     @FXML
@@ -59,10 +60,56 @@ public class MainController implements Initializable{
     }
 
 
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     *
+     * Initializes the table columns and sets up sorting and filtering.
+     */
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        configureTable();
+
+        System.out.println("this is working");
+        // 0. Initialize the columns.
+        colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(myTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        myTable.setItems(sortedData);
 
 
+    }
 
-     public void configureTable()
+    public void configureTable()
     {
 
         /**
@@ -82,7 +129,7 @@ public class MainController implements Initializable{
     // delete button clicked
     public void deleteItemClick() throws Exception{
         String eventId;
-        ObservableList<ItemEntity> eventSelected, allEvents;
+
 
         // all the items on the table
         allEvents = myTable.getItems();
@@ -91,7 +138,7 @@ public class MainController implements Initializable{
         // we will be deting this id element from the database
         eventId = eventSelected.get(0).getId();
         // this will remove the item
-        eventSelected.forEach(allEvents::remove);
+        // eventSelected.forEach(allEvents::remove);
 
 
         //The ItemEntity class is defined above
@@ -102,6 +149,9 @@ public class MainController implements Initializable{
         }catch (IOException e){
             System.out.println("Couldn't delete! -> " + e);
         }
+
+        configureTable();
+
 
     }
 
@@ -206,6 +256,9 @@ public class MainController implements Initializable{
             list.add(result.get());
             updateTable();
         }
+
+        configureTable();
+
     }
 
     /** Make sure that the values in the addItem method are valid numbers*/
@@ -249,69 +302,6 @@ public class MainController implements Initializable{
         myTable.setItems(list);
         // masterdata for the search bar
         masterData.addAll(list);
-
-    }
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     *
-     * Initializes the table columns and sets up sorting and filtering.
-     */
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        configureTable();
-
-
-
-
-
-
-        System.out.println("this is working");
-        // 0. Initialize the columns.
-        colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
-        colUnit.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("unit"));
-
-        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
-
-        // 2. Set the filter Predicate whenever the filter changes.
-        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(person -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                }
-                return false; // Does not match.
-            });
-        });
-
-        // 3. Wrap the FilteredList in a SortedList.
-        SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
-
-        // 4. Bind the SortedList comparator to the TableView comparator.
-        sortedData.comparatorProperty().bind(myTable.comparatorProperty());
-
-        // 5. Add sorted (and filtered) data to the table.
-        myTable.setItems(sortedData);
-
-
-
-
-
-
-
-
-
 
     }
 
