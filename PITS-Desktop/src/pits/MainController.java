@@ -4,6 +4,8 @@ import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -22,8 +24,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
 
-    @FXML
-    TableView<ItemEntity> myTable;
+
     @FXML
     TableColumn colName;
     @FXML
@@ -43,15 +44,23 @@ public class MainController implements Initializable{
     public ObservableList<ItemEntity> list;
     AppData<ItemEntity> myEvents;
 
+    //Search bar :
+    @FXML
+    private TextField filterField;
+    @FXML
+    TableView<ItemEntity> myTable;
+    @FXML
+     private ObservableList<ItemEntity> masterData = FXCollections.observableArrayList();
 
 
 
     public MainController() {
 
-
-
-
     }
+
+
+
+
 
      public void configureTable()
     {
@@ -217,6 +226,7 @@ public class MainController implements Initializable{
     {
 
         myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
+        // this should be the final list that is displayed at the table
         list = FXCollections.observableArrayList();
 
         try {
@@ -225,26 +235,83 @@ public class MainController implements Initializable{
             for(ItemEntity item: results)
             {
                 list.add(item);
-                System.out.println(item.getId());
-                System.out.println(item.getUnit());
-                System.out.println(item.getWalmartHyvee());
-                System.out.println(item.getUsFoods());
-                System.out.println(item.getRoma());
-                System.out.println("---------------------");
+//                System.out.println(item.getId());
+//                System.out.println(item.getUnit());
+//                System.out.println(item.getWalmartHyvee());
+//                System.out.println(item.getUsFoods());
+//                System.out.println(item.getRoma());
+//                System.out.println("---------------------");
             }
         } catch (IOException e) {
             System.out.println("Couldn't get! -> "+e);
         }
-
+        // whole list created till here
         myTable.setItems(list);
+        // masterdata for the search bar
+        masterData.addAll(list);
 
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     *
+     * Initializes the table columns and sets up sorting and filtering.
+     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         configureTable();
+
+
+
+
+
+
+        System.out.println("this is working");
+        // 0. Initialize the columns.
+        colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+        colUnit.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("unit"));
+
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(myTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        myTable.setItems(sortedData);
+
+
+
+
+
+
+
+
+
 
     }
 

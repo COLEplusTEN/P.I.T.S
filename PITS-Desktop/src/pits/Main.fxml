@@ -22,7 +22,7 @@
                </font>
             </Label>
             <Region prefHeight="59.0" prefWidth="518.0" />
-            <TextField fx:id="search" alignment="TOP_CENTER" prefHeight="31.0" prefWidth="149.0" promptText="Search by name">
+            <TextField fx:id="filterField" alignment="TOP_CENTER" prefHeight="31.0" prefWidth="149.0" promptText="Search by name">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></TextField>
