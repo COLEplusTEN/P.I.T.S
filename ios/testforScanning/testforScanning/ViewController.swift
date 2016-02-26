@@ -15,19 +15,15 @@ class ViewController: UIViewController {
         KCSStoreKeyCollectionName : "Events",
         KCSStoreKeyCollectionTemplateClass : Food.self
         ])
+    
     @IBAction func submit(sender: AnyObject) {
-       
-        
-        
-        
-        
-        
+
         let food = Food()
-        food.count = "12.01"
-        food.roma = "12.01"
-        food.unit = "can"
-        food.usFoods = "12.01"
-        food.walmartHyvee = "12.01"
+        food.count = "16.00"
+        food.roma = "16.00"
+        food.unit = "lid"
+        food.usFoods = "16.00"
+        food.walmartHyvee = "16.00"
         
         store.saveObject(
             food,
@@ -44,18 +40,20 @@ class ViewController: UIViewController {
         )
         print("testforsdfsdf")
     }
-    store.loadObjectWithID (
-    event.entityId,
-    withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-    if errorOrNil == nil {
-    NSLog("successful reload: %@", objectsOrNil[0] as! NSObject) // event updated
-    } else {
-    NSLog("error occurred: %@", errorOrNil)
+    @IBAction func load(sender: AnyObject) {
+        store.loadObjectWithID(
+            [ "56d0c9560c0dec967114e470", "56cbe344a9d67c8f640cc756" ],
+            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                if errorOrNil == nil {
+                    NSLog("successfully loaded objects: %@", objectsOrNil)
+                } else {
+                    NSLog("error occurred: %@", errorOrNil)
+                }
+            },
+            withProgressBlock: nil
+        )
     }
-    },
-    withProgressBlock: nil
-    )
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
