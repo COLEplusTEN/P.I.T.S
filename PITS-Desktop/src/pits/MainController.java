@@ -128,29 +128,51 @@ public class MainController implements Initializable{
 
     // delete button clicked
     public void deleteItemClick() throws Exception{
+
         String eventId;
 
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Delete Item");
+        alert.setHeaderText("This will delete the item permanently !");
+        ButtonType buttonCancel = new ButtonType("Cancel");
 
-        // all the items on the table
-        allEvents = myTable.getItems();
-        // the highlighted item
-        eventSelected = myTable.getSelectionModel().getSelectedItems();
-        // we will be deting this id element from the database
-        eventId = eventSelected.get(0).getId();
-        // this will remove the item
-        // eventSelected.forEach(allEvents::remove);
+        ButtonType buttonTypeCancel = new ButtonType("Delete", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonCancel, buttonTypeCancel);
+
+        Optional<ButtonType> result1 = alert.showAndWait();
+        if (result1.get() == buttonTypeCancel){
+            // ... user chose "One"
+            // all the items on the table
+            allEvents = myTable.getItems();
+            // the highlighted item
+            eventSelected = myTable.getSelectionModel().getSelectedItems();
+            // we will be deting this id element from the database
+            eventId = eventSelected.get(0).getId();
+            // this will remove the item
+            // eventSelected.forEach(allEvents::remove);
 
 
-        //The ItemEntity class is defined above
-        ItemEntity event = new ItemEntity();
-        myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
-        try{
-            KinveyDeleteResponse result = myEvents.deleteBlocking(eventId).execute();
-        }catch (IOException e){
-            System.out.println("Couldn't delete! -> " + e);
+            //The ItemEntity class is defined above
+            ItemEntity event = new ItemEntity();
+            myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
+            try{
+                KinveyDeleteResponse result = myEvents.deleteBlocking(eventId).execute();
+            }catch (IOException e){
+                System.out.println("Couldn't delete! -> " + e);
+            }
+
+            configureTable();
+
+
+        }
+        else{
+            System.out.println("There was an exit");
         }
 
-        configureTable();
+
+
+
 
 
     }
