@@ -2,6 +2,8 @@ package pits;
 
 import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -72,39 +74,66 @@ public class MainController implements Initializable{
 
         configureTable();
 
-        System.out.println("this is working");
-        // 0. Initialize the columns.
-        colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+        /*
+        * Checking the focus on search bar every single time
+        * */
+        TextField yourTextField = filterField;
+        yourTextField.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            {
 
-        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
 
-        // 2. Set the filter Predicate whenever the filter changes.
-        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(person -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
+                // this is when there is a focus .... and we activate the search methods
+                if (newPropertyValue)
+                {
+                    System.out.println("Textfield on focus");
+                    // 0. Initialize the columns.
+                    colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+
+                    // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+                    FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
+
+                    // 2. Set the filter Predicate whenever the filter changes.
+                    filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+                        filteredData.setPredicate(person -> {
+                            // If filter text is empty, display all persons.
+                            if (newValue == null || newValue.isEmpty()) {
+                                return true;
+                            }
+
+                            // Compare first name and last name of every person with filter text.
+                            String lowerCaseFilter = newValue.toLowerCase();
+
+                            if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
+                                return true; // Filter matches first name.
+                            }
+                            return false; // Does not match.
+                        });
+                    });
+
+                    // 3. Wrap the FilteredList in a SortedList.
+                    SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
+
+                    // 4. Bind the SortedList comparator to the TableView comparator.
+                    sortedData.comparatorProperty().bind(myTable.comparatorProperty());
+
+                    // 5. Add sorted (and filtered) data to the table.
+                    myTable.setItems(sortedData);
+
+
+
                 }
-
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                // this is when we are out of focus
+                else
+                {
+                    System.out.println("Textfield out focus");
                 }
-                return false; // Does not match.
-            });
+            }
         });
 
-        // 3. Wrap the FilteredList in a SortedList.
-        SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
 
-        // 4. Bind the SortedList comparator to the TableView comparator.
-        sortedData.comparatorProperty().bind(myTable.comparatorProperty());
-
-        // 5. Add sorted (and filtered) data to the table.
-        myTable.setItems(sortedData);
 
 
     }
@@ -131,14 +160,15 @@ public class MainController implements Initializable{
 
         String eventId;
 
+        // Alert dialog created
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Delete Item");
         alert.setHeaderText("This will delete the item permanently !");
-        ButtonType buttonCancel = new ButtonType("Cancel");
+        ButtonType cancelButtonDeleteDialog = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        ButtonType buttonTypeCancel = new ButtonType("Delete", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeCancel = new ButtonType("Delete");
 
-        alert.getButtonTypes().setAll(buttonCancel, buttonTypeCancel);
+        alert.getButtonTypes().setAll(buttonTypeCancel,cancelButtonDeleteDialog);
 
         Optional<ButtonType> result1 = alert.showAndWait();
         if (result1.get() == buttonTypeCancel){
@@ -167,13 +197,8 @@ public class MainController implements Initializable{
 
         }
         else{
-            System.out.println("There was an exit");
+            System.out.println("Exit : pressed");
         }
-
-
-
-
-
 
     }
 
