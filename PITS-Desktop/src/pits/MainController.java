@@ -43,7 +43,7 @@ public class MainController implements Initializable{
     Button addItem;
 
 
-    public ObservableList<ItemEntity> list;
+    public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
     AppData<ItemEntity> myEvents;
     ObservableList<ItemEntity> eventSelected, allEvents;
 
@@ -78,60 +78,68 @@ public class MainController implements Initializable{
         * Checking the focus on search bar every single time
         * */
         TextField yourTextField = filterField;
+
+
+
+
+
         yourTextField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
             {
 
+                // 0. Initialize the columns.
+                colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+
+                // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+                FilteredList<ItemEntity> filteredData = new FilteredList<>(list, p -> true);
+                // 2. Set the filter Predicate whenever the filter changes.
+                filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+                    filteredData.setPredicate(person -> {
+                        // If filter text is empty, display all persons.
+                        if (newValue == null || newValue.isEmpty()) {
+                            return true;
+                        }
+
+                        // Compare first name and last name of every person with filter text.
+                        String lowerCaseFilter = newValue.toLowerCase();
+
+                        if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
+                            return true; // Filter matches first name.
+                        }
+                        return false; // Does not match.
+                    });
+                });
+
 
                 // this is when there is a focus .... and we activate the search methods
                 if (newPropertyValue)
                 {
                     System.out.println("Textfield on focus");
-                    // 0. Initialize the columns.
-                    colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
-
-                    // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-                    FilteredList<ItemEntity> filteredData = new FilteredList<>(masterData, p -> true);
-
-                    // 2. Set the filter Predicate whenever the filter changes.
-                    filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-                        filteredData.setPredicate(person -> {
-                            // If filter text is empty, display all persons.
-                            if (newValue == null || newValue.isEmpty()) {
-                                return true;
-                            }
-
-                            // Compare first name and last name of every person with filter text.
-                            String lowerCaseFilter = newValue.toLowerCase();
-
-                            if (person.getId().toLowerCase().contains(lowerCaseFilter)) {
-                                return true; // Filter matches first name.
-                            }
-                            return false; // Does not match.
-                        });
-                    });
-
-                    // 3. Wrap the FilteredList in a SortedList.
-                    SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
-
-                    // 4. Bind the SortedList comparator to the TableView comparator.
-                    sortedData.comparatorProperty().bind(myTable.comparatorProperty());
-
-                    // 5. Add sorted (and filtered) data to the table.
-                    myTable.setItems(sortedData);
 
 
 
-                }
+ }
                 // this is when we are out of focus
                 else
                 {
                     System.out.println("Textfield out focus");
                 }
+
+
+                // 3. Wrap the FilteredList in a SortedList.
+                SortedList<ItemEntity> sortedData = new SortedList<>(filteredData);
+
+                // 4. Bind the SortedList comparator to the TableView comparator.
+                sortedData.comparatorProperty().bind(myTable.comparatorProperty());
+
+                // 5. Add sorted (and filtered) data to the table.
+                 myTable.setItems(sortedData);
             }
         });
+
+
 
 
 
@@ -174,7 +182,7 @@ public class MainController implements Initializable{
         if (result1.get() == buttonTypeCancel){
             // ... user chose "One"
             // all the items on the table
-            allEvents = myTable.getItems();
+           // allEvents = myTable.getItems();
             // the highlighted item
             eventSelected = myTable.getSelectionModel().getSelectedItems();
             // we will be deting this id element from the database
@@ -192,7 +200,8 @@ public class MainController implements Initializable{
                 System.out.println("Couldn't delete! -> " + e);
             }
 
-            configureTable();
+
+            updateTable();
 
 
         }
@@ -300,11 +309,9 @@ public class MainController implements Initializable{
         if(result.isPresent())
         {
             System.out.println("Result is present");
-            list.add(result.get());
             updateTable();
         }
 
-        configureTable();
 
     }
 
@@ -327,14 +334,15 @@ public class MainController implements Initializable{
 
         myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
         // this should be the final list that is displayed at the table
-        list = FXCollections.observableArrayList();
-
+        //list = FXCollections.observableArrayList();
+        list.clear();
         try {
             ItemEntity[] results = myEvents.getBlocking().execute();
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("in updateTable");
             for(ItemEntity item: results)
             {
-                list.add(item);
+                if(!list.contains(item))
+                    list.add(item);
 //                System.out.println(item.getId());
 //                System.out.println(item.getUnit());
 //                System.out.println(item.getWalmartHyvee());
@@ -342,13 +350,14 @@ public class MainController implements Initializable{
 //                System.out.println(item.getRoma());
 //                System.out.println("---------------------");
             }
+            System.out.println("add everything to the list");
         } catch (IOException e) {
             System.out.println("Couldn't get! -> "+e);
         }
         // whole list created till here
         myTable.setItems(list);
         // masterdata for the search bar
-        masterData.addAll(list);
+        //masterData.addAll(list);
 
     }
 
