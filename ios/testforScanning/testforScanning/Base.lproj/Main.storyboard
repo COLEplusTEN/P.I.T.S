@@ -18,15 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Po-hl1">
-                                <rect key="frame" x="89" y="349" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="87" y="349" width="50" height="30"/>
+                                <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ot2-uV-hxd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SH5-Jq-7ek">
-                                <rect key="frame" x="89" y="279" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="93" y="279" width="39" height="30"/>
+                                <state key="normal" title="Fetch"/>
                                 <connections>
                                     <action selector="load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U95-rz-NQ1"/>
                                 </connections>
