@@ -146,11 +146,26 @@ public class MainController implements Initializable{
      * This works when the user double clicks on the row twice
      * */
 
+
         myTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+
+                            if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
                     System.out.println(myTable.getSelectionModel().getSelectedItem());
+                    try {
+
+                        String textName1  = myTable.getSelectionModel().getSelectedItem().getId();
+                        String textUnit1  = myTable.getSelectionModel().getSelectedItem().getUnit();
+                        String textWH1  = myTable.getSelectionModel().getSelectedItem().getWalmartHyvee();
+                        String textUSFoods1  = myTable.getSelectionModel().getSelectedItem().getUsFoods();
+                        String textRoma1 = myTable.getSelectionModel().getSelectedItem().getRoma();
+                        String textCount1  = myTable.getSelectionModel().getSelectedItem().getCount();
+
+                        editItemClick(textName1, textUnit1, textWH1,textUSFoods1,textRoma1,textCount1);
+                    } catch (Exception e) {
+                        System.out.println("the function will not work");
+                    }
                 }
             }
         });
@@ -158,6 +173,133 @@ public class MainController implements Initializable{
 
 
     }
+
+    // this is for add new item
+    public  void editItemClick(String textName1,String textUnit1,String textWH1,String textUSFoods1,String textRoma1,String textCount1) throws Exception {
+        /**
+         * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
+         * when they press ok, validate input and add into kinvey*/
+        Dialog<ItemEntity> dialog = new Dialog<>();
+        dialog.setTitle("Edit Item");
+        dialog.setResizable(false);
+
+        Label labelName = new Label("Name:");
+        Label labelUnit = new Label("Unit:");
+        Label labelWH = new Label("Walmart/Hyvee Price:");
+        Label labelUSFoods = new Label("USFoods Price:");
+        Label labelRoma = new Label("Roma Price:");
+        Label labelCount =  new Label("Count:");
+        TextField textName = new TextField();
+        TextField textUnit = new TextField();
+        TextField textWH = new TextField();
+        TextField textUSFoods = new TextField();
+        TextField textRoma = new TextField();
+        TextField textCount =  new TextField();
+
+        textName.setEditable(false);
+        textName.setText(textName1);
+        textUnit.setText(textUnit1);
+        textWH.setText(textWH1);
+        textUSFoods.setText(textUSFoods1);
+        textRoma.setText(textRoma1);
+        textCount.setText(textCount1);
+
+
+
+
+
+
+        GridPane grid = new GridPane();
+        grid.add(labelName, 1,1);
+        grid.add(labelUnit,1,2);
+        grid.add(labelWH,1,3);
+        grid.add(labelUSFoods,1,4);
+        grid.add(labelRoma,1,5);
+        grid.add(labelCount,1,6);
+        grid.add(textName, 2,1);
+        grid.add(textUnit,2,2);
+        grid.add(textWH,2,3);
+        grid.add(textUSFoods,2,4);
+        grid.add(textRoma,2,5);
+        grid.add(textCount,2,6);
+
+
+        dialog.getDialogPane().setContent(grid);
+
+        ButtonType buttonOK = new ButtonType("Save Changes", ButtonBar.ButtonData.OK_DONE);
+
+
+        dialog.getDialogPane().getButtonTypes().add(buttonOK);
+
+        dialog.setResultConverter(button -> {
+
+            if(button == buttonOK)
+            {
+                String walmartHyvee = "0.0";
+                String USFoods = "0.0";
+                String roma = "0.0";
+
+                if(!textName.getText().equals("") && !textUnit.getText().equals(""))
+                {
+                    System.out.println("Text fields are valid.");
+                }
+                else
+                {
+                    return null;
+                }
+
+                //get values of prices if not null
+                if(!textWH.getText().equals(""))
+                {
+                    if(isNumeric(textWH.getText()))
+                        walmartHyvee = textWH.getText();
+                    //walmartHyvee=Double.valueOf(textWH.getText());
+                }
+                if(!textUSFoods.getText().equals(""))
+                {
+                    if(isNumeric(textUSFoods.getText()))
+                        USFoods = textUSFoods.getText();
+                    //USFoods=Double.valueOf(textUSFoods.getText());
+                }
+                if(!textRoma.getText().equals(""))
+                {
+                    if(isNumeric(textRoma.getText()))
+                        roma = textRoma.getText();
+                    //roma=Double.valueOf(textRoma.getText());
+                }
+                if(!textCount.getText().equals(""))
+                {
+                    if(isNumeric(textCount.getText()))
+                        roma = textCount.getText();
+
+                }
+
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                try{
+                    ItemEntity result = myEvents.saveBlocking(newItem).execute();
+                }catch (IOException e){
+                    System.out.println("Couldn't save new item! -> " + e);
+                }
+
+
+
+                return newItem;
+            }
+
+            return null;
+        });
+
+        Optional<ItemEntity> result = dialog.showAndWait();
+        if(result.isPresent())
+        {
+            System.out.println("Result is present");
+            updateTable();
+        }
+
+
+    }
+
+
 
     public void configureTable()
     {
@@ -226,7 +368,7 @@ public class MainController implements Initializable{
 
 
     // this is for add new item
-    public void addItemClick() throws Exception {
+    public  void addItemClick() throws Exception {
         /**
          * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
          * when they press ok, validate input and add into kinvey*/
@@ -244,6 +386,9 @@ public class MainController implements Initializable{
         TextField textWH = new TextField();
         TextField textUSFoods = new TextField();
         TextField textRoma = new TextField();
+
+
+
 
         GridPane grid = new GridPane();
         grid.add(labelName, 1,1);
