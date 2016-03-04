@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let food = Food()
         food.count = "16.00"
         food.roma = "16.00"
-        food.unit = "lid"
+        food.unit = "test"
         food.usFoods = "16.00"
         food.walmartHyvee = "16.00"
         
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
                     NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
                 } else {
                     //save was successful
-                    NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+                    NSLog("Successfully saved event(s) (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
                 }
             },
             withProgressBlock: nil
@@ -41,13 +41,18 @@ class ViewController: UIViewController {
         print("testforsdfsdf")
     }
     @IBAction func load(sender: AnyObject) {
-        store.loadObjectWithID(
-            [ "56d0c9560c0dec967114e470", "56cbe344a9d67c8f640cc756" ],
+        store.queryWithQuery(
+            KCSQuery(onField: "unit", withExactMatchForValue: "test"),
             withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                if errorOrNil == nil {
-                    NSLog("successfully loaded objects: %@", objectsOrNil)
+                if errorOrNil != nil {
+                    //save failed
+                    NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
                 } else {
-                    NSLog("error occurred: %@", errorOrNil)
+                    //save was successful
+                    NSLog("Successfully fetched event(s) (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+                    for object in objectsOrNil {
+                        print(object)
+                    }
                 }
             },
             withProgressBlock: nil
