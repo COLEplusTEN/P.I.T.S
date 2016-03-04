@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -52,6 +52,10 @@ class ViewController: UIViewController {
                     NSLog("Successfully fetched event(s) (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
                     for object in objectsOrNil {
                         print(object)
+                        let json = JSON(object)
+                        if let string = json.rawString() {
+                            print(string)
+                        }
                     }
                 }
             },
