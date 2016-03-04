@@ -10,9 +10,8 @@ import Foundation
 
 
 class Food : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPersistable
-    var entityId: String? //Kinvey entity _id
+    var _id: String?
     var count: String?
-    
     var roma: String?
     var unit:String?
     var usFoods:String?
@@ -24,7 +23,7 @@ class Food : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPer
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
-            "entityId" : KCSEntityKeyId, //the required _id field
+            "_id" : "_id",
             "count" : "count",
             "roma" : "roam",
             "unit" : "unit",

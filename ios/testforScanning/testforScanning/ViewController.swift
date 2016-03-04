@@ -11,6 +11,10 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var id: UILabel!
+    
+    @IBOutlet weak var countField: UITextField!
+    
     let store = KCSAppdataStore.storeWithOptions([
         KCSStoreKeyCollectionName : "Events",
         KCSStoreKeyCollectionTemplateClass : Food.self
@@ -19,7 +23,8 @@ class ViewController: UIViewController {
     @IBAction func submit(sender: AnyObject) {
 
         let food = Food()
-        food.count = "16.00"
+        food._id = "lettuce"
+        food.count = countField.text
         food.roma = "16.00"
         food.unit = "test"
         food.usFoods = "16.00"
@@ -38,7 +43,6 @@ class ViewController: UIViewController {
             },
             withProgressBlock: nil
         )
-        print("testforsdfsdf")
     }
     @IBAction func load(sender: AnyObject) {
 //        store.queryWithQuery(
@@ -61,8 +65,8 @@ class ViewController: UIViewController {
 //            },
 //            withProgressBlock: nil
 //        )
-        func fetchLot() {
-        let query:KCSQuery = KCSQuery(onField: "unit", withExactMatchForValue: "test")
+        //func fetchLot() {
+        let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: "lettuce")
         store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
             for obj in objectsOrNil {
                 print(obj)
@@ -71,15 +75,12 @@ class ViewController: UIViewController {
             if let results = objectsOrNil as? NSArray
             {
                 for r in results {
-                    let c = r as? Lot
-                    print(c?.seller)
-                    print(c?.askingPrice)
-                    // store an object to remove later
-                    self.objectToRemove = c
+                    let c = r as? Food
+                    self.id?.text = c?._id
+                    self.countField?.text = c?.count
                 }
             }
             }, withProgressBlock: nil)
-    }
     }
 
        override func viewDidLoad() {
