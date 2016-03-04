@@ -33,7 +33,7 @@ class ViewController: UIViewController {
                     NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
                 } else {
                     //save was successful
-                    NSLog("Successfully saved event(s) (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+                    NSLog("Successfully saved event(s).")
                 }
             },
             withProgressBlock: nil
@@ -42,14 +42,14 @@ class ViewController: UIViewController {
     }
     @IBAction func load(sender: AnyObject) {
         store.queryWithQuery(
-            KCSQuery(onField: "unit", withExactMatchForValue: "test"),
+            KCSQuery(onField: "unit", withExactMatchForValue: "can"),
             withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
                 if errorOrNil != nil {
                     //save failed
                     NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
                 } else {
                     //save was successful
-                    NSLog("Successfully fetched event(s) (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+                    NSLog("Successfully fetched event(s).")
                     for object in objectsOrNil {
                         print(object)
                         let json = JSON(object)
