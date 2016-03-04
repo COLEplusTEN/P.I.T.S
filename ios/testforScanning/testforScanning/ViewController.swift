@@ -41,27 +41,47 @@ class ViewController: UIViewController {
         print("testforsdfsdf")
     }
     @IBAction func load(sender: AnyObject) {
-        store.queryWithQuery(
-            KCSQuery(onField: "unit", withExactMatchForValue: "can"),
-            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                if errorOrNil != nil {
-                    //save failed
-                    NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
-                } else {
-                    //save was successful
-                    NSLog("Successfully fetched event(s).")
-                    for object in objectsOrNil {
-                        print(object)
-                        let json = JSON(object)
-                        if let string = json.rawString() {
-                            print(string)
-                        }
-                    }
+//        store.queryWithQuery(
+//            KCSQuery(onField: "unit", withExactMatchForValue: "can"),
+//            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+//                if errorOrNil != nil {
+//                    //save failed
+//                    NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
+//                } else {
+//                    //save was successful
+//                    NSLog("Successfully fetched event(s).")
+//                    for object in objectsOrNil {
+//                        print(object)
+//                        let json = JSON(object)
+//                        if let string = json.rawString() {
+//                            print(string)
+//                        }
+//                    }
+//                }
+//            },
+//            withProgressBlock: nil
+//        )
+        func fetchLot() {
+        let query:KCSQuery = KCSQuery(onField: "unit", withExactMatchForValue: "test")
+        store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+            for obj in objectsOrNil {
+                print(obj)
+            }
+            
+            if let results = objectsOrNil as? NSArray
+            {
+                for r in results {
+                    let c = r as? Lot
+                    print(c?.seller)
+                    print(c?.askingPrice)
+                    // store an object to remove later
+                    self.objectToRemove = c
                 }
-            },
-            withProgressBlock: nil
-        )
+            }
+            }, withProgressBlock: nil)
     }
+    }
+
        override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
