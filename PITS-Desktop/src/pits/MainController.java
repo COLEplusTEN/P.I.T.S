@@ -189,6 +189,7 @@ public class MainController implements Initializable{
         Label labelUSFoods = new Label("USFoods Price:");
         Label labelRoma = new Label("Roma Price:");
         Label labelCount =  new Label("Count:");
+
         TextField textName = new TextField();
         TextField textUnit = new TextField();
         TextField textWH = new TextField();
@@ -203,11 +204,6 @@ public class MainController implements Initializable{
         textUSFoods.setText(textUSFoods1);
         textRoma.setText(textRoma1);
         textCount.setText(textCount1);
-
-
-
-
-
 
         GridPane grid = new GridPane();
         grid.add(labelName, 1,1);
@@ -238,6 +234,7 @@ public class MainController implements Initializable{
                 String walmartHyvee = "0.0";
                 String USFoods = "0.0";
                 String roma = "0.0";
+                String count = "0";
 
                 if(!textName.getText().equals("") && !textUnit.getText().equals(""))
                 {
@@ -270,11 +267,11 @@ public class MainController implements Initializable{
                 if(!textCount.getText().equals(""))
                 {
                     if(isNumeric(textCount.getText()))
-                        roma = textCount.getText();
+                            count= textCount.getText();
 
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
