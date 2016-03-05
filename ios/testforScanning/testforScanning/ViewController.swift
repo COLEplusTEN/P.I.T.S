@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -45,27 +44,6 @@ class ViewController: UIViewController {
         )
     }
     @IBAction func load(sender: AnyObject) {
-//        store.queryWithQuery(
-//            KCSQuery(onField: "unit", withExactMatchForValue: "can"),
-//            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-//                if errorOrNil != nil {
-//                    //save failed
-//                    NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
-//                } else {
-//                    //save was successful
-//                    NSLog("Successfully fetched event(s).")
-//                    for object in objectsOrNil {
-//                        print(object)
-//                        let json = JSON(object)
-//                        if let string = json.rawString() {
-//                            print(string)
-//                        }
-//                    }
-//                }
-//            },
-//            withProgressBlock: nil
-//        )
-        //func fetchLot() {
         let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: "lettuce")
         store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
             for obj in objectsOrNil {
