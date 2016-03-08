@@ -7,9 +7,12 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var id: UILabel!
+    
+    @IBOutlet weak var countField: UITextField!
     
     let store = KCSAppdataStore.storeWithOptions([
         KCSStoreKeyCollectionName : "Events",
@@ -19,7 +22,8 @@ class ViewController: UIViewController {
     @IBAction func submit(sender: AnyObject) {
 
         let food = Food()
-        food.count = "16.00"
+        food._id = "lettuce"
+        food.count = countField.text
         food.roma = "16.00"
         food.unit = "test"
         food.usFoods = "16.00"
@@ -38,31 +42,9 @@ class ViewController: UIViewController {
             },
             withProgressBlock: nil
         )
-        print("testforsdfsdf")
     }
     @IBAction func load(sender: AnyObject) {
-//        store.queryWithQuery(
-//            KCSQuery(onField: "unit", withExactMatchForValue: "can"),
-//            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-//                if errorOrNil != nil {
-//                    //save failed
-//                    NSLog("Fetched failed, with error: %@", errorOrNil.localizedFailureReason!)
-//                } else {
-//                    //save was successful
-//                    NSLog("Successfully fetched event(s).")
-//                    for object in objectsOrNil {
-//                        print(object)
-//                        let json = JSON(object)
-//                        if let string = json.rawString() {
-//                            print(string)
-//                        }
-//                    }
-//                }
-//            },
-//            withProgressBlock: nil
-//        )
-        func fetchLot() {
-        let query:KCSQuery = KCSQuery(onField: "unit", withExactMatchForValue: "test")
+        let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: "lettuce")
         store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
             for obj in objectsOrNil {
                 print(obj)
@@ -71,15 +53,12 @@ class ViewController: UIViewController {
             if let results = objectsOrNil as? NSArray
             {
                 for r in results {
-                    let c = r as? Lot
-                    print(c?.seller)
-                    print(c?.askingPrice)
-                    // store an object to remove later
-                    self.objectToRemove = c
+                    let c = r as? Food
+                    self.id?.text = c?._id
+                    self.countField?.text = c?.count
                 }
             }
             }, withProgressBlock: nil)
-    }
     }
 
        override func viewDidLoad() {
