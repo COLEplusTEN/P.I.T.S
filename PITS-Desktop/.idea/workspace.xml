@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a8302ef-541c-4451-bf8d-0675d703eb61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pits/MainController.java" afterPath="$PROJECT_DIR$/src/pits/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/MainController.class" afterPath="$PROJECT_DIR$/out/production/PITS-Desktop/pits/MainController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PITS-Desktop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pits/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60307693">
-              <caret line="236" column="13" selection-start-line="236" selection-start-column="13" selection-end-line="236" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.5263158">
+              <caret line="275" column="59" selection-start-line="275" selection-start-column="59" selection-end-line="275" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,10 +184,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning.xcodeproj/project.pbxproj</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning.xcodeproj/project.xcworkspace/xcuserdata/COLEplusTEN.xcuserdatad/UserInterfaceState.xcuserstate</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning/Base.lproj/Main.storyboard</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning/ViewController.swift</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -194,36 +191,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Podfile</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Podfile.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Local Podspecs/SwiftyJSON.podspec.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Manifest.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Pods.xcodeproj/project.pbxproj</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Pods.xcodeproj/xcuserdata/COLEplusTEN.xcuserdatad/xcschemes/Pods-testforScanning.xcscheme</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Pods.xcodeproj/xcuserdata/COLEplusTEN.xcuserdatad/xcschemes/SwiftyJSON.xcscheme</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Pods.xcodeproj/xcuserdata/COLEplusTEN.xcuserdatad/xcschemes/xcschememanagement.plist</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/SwiftyJSON/LICENSE</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/SwiftyJSON/README.md</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/SwiftyJSON/Source/SwiftyJSON.swift</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Info.plist</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-acknowledgements.markdown</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-acknowledgements.plist</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-dummy.m</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-frameworks.sh</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-resources.sh</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning-umbrella.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning.debug.xcconfig</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning.modulemap</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/Pods-testforScanning/Pods-testforScanning.release.xcconfig</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/Info.plist</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-dummy.m</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.modulemap</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.xcconfig</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning.xcworkspace/contents.xcworkspacedata</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning.xcworkspace/xcuserdata/COLEplusTEN.xcuserdatad/UserInterfaceState.xcuserstate</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/testforScanning/testforScanning.xcworkspace/xcuserdata/COLEplusTEN.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Weekly Assessments/TeamSupreme_44-562_Spring2016_WeeklyAssessment_Feb02.docx</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../Weekly Assessments/TeamSupreme_44-562_Spring2016_WeeklyAssessment_Feb9.docx</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -231,7 +200,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../ios/placeholder.txt</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -649,7 +617,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456524497228</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edit button fixed">
+      <created>1457130088572</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1457130088572</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -663,7 +637,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20552486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20552486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1598746" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -720,7 +694,8 @@
     <MESSAGE value="deleted item and Additem" />
     <MESSAGE value="search bar works now" />
     <MESSAGE value="delete button issue fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete button issue fixed" />
+    <MESSAGE value="edit button fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit button fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1199,8 +1174,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pits/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60307693">
-          <caret line="236" column="13" selection-start-line="236" selection-start-column="13" selection-end-line="236" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.5263158">
+          <caret line="275" column="59" selection-start-line="275" selection-start-column="59" selection-end-line="275" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
