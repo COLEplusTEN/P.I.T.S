@@ -30,10 +30,6 @@ public class ItemEntity extends GenericJson {
     @Key
     private String count;
 
-    @Key("_kmd")
-    private KinveyMetaData meta; // Kinvey metadata, OPTIONAL
-    @Key("_acl")
-    private KinveyMetaData.AccessControlList acl; //Kinvey access control, OPTIONAL
 
     public ItemEntity(){}  //GenericJson classes must have a public empty constructor
 

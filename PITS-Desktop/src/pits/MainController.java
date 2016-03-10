@@ -47,16 +47,13 @@ public class MainController implements Initializable{
 
     public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
     AppData<ItemEntity> myEvents;
-    ObservableList<ItemEntity> eventSelected, allEvents;
+    ObservableList<ItemEntity> eventSelected;
 
     //Search bar :
     @FXML
     private TextField filterField;
     @FXML
     TableView<ItemEntity> myTable;
-    @FXML
-     private ObservableList<ItemEntity> masterData = FXCollections.observableArrayList();
-
 
 
     public MainController() {
@@ -76,10 +73,16 @@ public class MainController implements Initializable{
 
         configureTable();
 
+
+
         /*
         * Checking the focus on search bar every single time
         * */
         TextField yourTextField = filterField;
+
+
+
+
 
 
 
