@@ -82,12 +82,6 @@ public class MainController implements Initializable{
 
 
 
-
-
-
-
-
-
         yourTextField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
