@@ -3,11 +3,8 @@ package pits;
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.Key;
 import com.kinvey.java.model.KinveyMetaData;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.Event;
 
 
@@ -29,17 +26,20 @@ public class ItemEntity extends GenericJson {
     private String roma;
     @Key
     private String count;
+    @Key
+    private String testTest;
 
 
     public ItemEntity(){}  //GenericJson classes must have a public empty constructor
 
-    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count) {
+    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count, String testTest) {
         this.id = name;
         this.unit = unit;
         this.walmartHyvee = walmartHyvee;
         this.usFoods = usfoods;
         this.roma = roma;
         this.count = count;
+        this.testTest = testTest;
     }
 
     public ItemEntity(String name){
@@ -94,4 +94,31 @@ public class ItemEntity extends GenericJson {
     public void setCount(String count) {
         this.count = count;
     }
+
+    public String getTestTest() {
+        return testTest;
+    }
+
+    public void setTestTest(String testTest) {
+        this.testTest = testTest;
+    }
+
+
+    private SimpleBooleanProperty checked = new SimpleBooleanProperty(false);
+    // other columns here
+
+    public SimpleBooleanProperty checkedProperty() {
+        return this.checked;
+    }
+
+    public java.lang.Boolean getChecked() {
+        return this.checkedProperty().get();
+    }
+
+    public void setChecked(final java.lang.Boolean checked) {
+        this.checkedProperty().set(checked);
+    }
+
+
+
 }

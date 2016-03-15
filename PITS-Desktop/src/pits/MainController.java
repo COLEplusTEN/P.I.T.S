@@ -16,9 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +43,8 @@ public class MainController implements Initializable{
     TableColumn colRoma;
     @FXML
     TableColumn colCount;
+    @FXML
+    TableColumn testTest;
     @FXML
     Button addItem;
 
@@ -187,6 +191,7 @@ public class MainController implements Initializable{
         Label labelRoma = new Label("Roma Price:");
         Label labelCount =  new Label("Count:");
 
+
         TextField textName = new TextField();
         TextField textUnit = new TextField();
         TextField textWH = new TextField();
@@ -215,6 +220,7 @@ public class MainController implements Initializable{
         grid.add(textUSFoods,2,4);
         grid.add(textRoma,2,5);
         grid.add(textCount,2,6);
+
 
 
         dialog.getDialogPane().setContent(grid);
@@ -268,7 +274,7 @@ public class MainController implements Initializable{
 
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count);
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count,"gaga");
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
@@ -306,6 +312,7 @@ public class MainController implements Initializable{
         colUSFoods.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("usFoods"));
         colRoma.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("roma"));
         colCount.setCellValueFactory(new PropertyValueFactory<ItemEntity, Integer>("count"));
+        CheckBoxTableCell<ItemEntity,Boolean> checkBoxCell = new CheckBoxTableCell();
 
         updateTable();
 
@@ -375,11 +382,14 @@ public class MainController implements Initializable{
         Label labelWH = new Label("Walmart/Hyvee Price:");
         Label labelUSFoods = new Label("USFoods Price:");
         Label labelRoma = new Label("Roma Price:");
+        Label labelTest =  new Label ("Check box");
+
         TextField textName = new TextField();
         TextField textUnit = new TextField();
         TextField textWH = new TextField();
         TextField textUSFoods = new TextField();
         TextField textRoma = new TextField();
+        TextField textTest = new TextField();
 
 
 
@@ -395,6 +405,7 @@ public class MainController implements Initializable{
         grid.add(textWH,2,3);
         grid.add(textUSFoods,2,4);
         grid.add(textRoma,2,5);
+        grid.add(textTest,2,3);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -442,7 +453,7 @@ public class MainController implements Initializable{
                         //roma=Double.valueOf(textRoma.getText());
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0",textTest.getText());
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
