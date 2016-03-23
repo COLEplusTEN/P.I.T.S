@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBAction func submit(sender: AnyObject) {
 
         let food = Food()
-        food._id = "lettuce"
+        food._id = id.text
         food.count = countField.text
         food.roma = "16.00"
         food.unit = "test"
