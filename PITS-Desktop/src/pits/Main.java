@@ -22,7 +22,9 @@ public class Main extends Application {
     public static final String masterSecret = "81181f297d044117a537c53378eae68d";
     public static Client mKinveyClient;
 
+    public static final String nameOfCollection = "eventsCollection";
 
+    // app secret : 4e43176fdfe14d44878492851d93385f
 
 
 

@@ -26,20 +26,18 @@ public class ItemEntity extends GenericJson {
     private String roma;
     @Key
     private String count;
-    @Key
-    private String testTest;
+
 
 
     public ItemEntity(){}  //GenericJson classes must have a public empty constructor
 
-    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count, String testTest) {
+    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count) {
         this.id = name;
         this.unit = unit;
         this.walmartHyvee = walmartHyvee;
         this.usFoods = usfoods;
         this.roma = roma;
         this.count = count;
-        this.testTest = testTest;
     }
 
     public ItemEntity(String name){
@@ -95,13 +93,13 @@ public class ItemEntity extends GenericJson {
         this.count = count;
     }
 
-    public String getTestTest() {
-        return testTest;
-    }
-
-    public void setTestTest(String testTest) {
-        this.testTest = testTest;
-    }
+//    public String getTestTest() {
+//        return testTest;
+//    }
+//
+//    public void setTestTest(String testTest) {
+//        this.testTest = testTest;
+//    }
 
 
     private SimpleBooleanProperty checked = new SimpleBooleanProperty(false);

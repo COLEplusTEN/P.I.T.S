@@ -22,10 +22,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 
 public class MainController implements Initializable{
@@ -43,8 +49,6 @@ public class MainController implements Initializable{
     TableColumn colRoma;
     @FXML
     TableColumn colCount;
-    @FXML
-    TableColumn testTest;
     @FXML
     Button addItem;
 
@@ -274,7 +278,7 @@ public class MainController implements Initializable{
 
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count,"gaga");
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
@@ -312,7 +316,6 @@ public class MainController implements Initializable{
         colUSFoods.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("usFoods"));
         colRoma.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("roma"));
         colCount.setCellValueFactory(new PropertyValueFactory<ItemEntity, Integer>("count"));
-        CheckBoxTableCell<ItemEntity,Boolean> checkBoxCell = new CheckBoxTableCell();
 
         updateTable();
 
@@ -349,7 +352,7 @@ public class MainController implements Initializable{
 
             //The ItemEntity class is defined above
             ItemEntity event = new ItemEntity();
-            myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
+            myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
             try{
                 KinveyDeleteResponse result = myEvents.deleteBlocking(eventId).execute();
             }catch (IOException e){
@@ -382,14 +385,12 @@ public class MainController implements Initializable{
         Label labelWH = new Label("Walmart/Hyvee Price:");
         Label labelUSFoods = new Label("USFoods Price:");
         Label labelRoma = new Label("Roma Price:");
-        Label labelTest =  new Label ("Check box");
 
         TextField textName = new TextField();
         TextField textUnit = new TextField();
         TextField textWH = new TextField();
         TextField textUSFoods = new TextField();
         TextField textRoma = new TextField();
-        TextField textTest = new TextField();
 
 
 
@@ -405,7 +406,6 @@ public class MainController implements Initializable{
         grid.add(textWH,2,3);
         grid.add(textUSFoods,2,4);
         grid.add(textRoma,2,5);
-        grid.add(textTest,2,3);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -453,7 +453,7 @@ public class MainController implements Initializable{
                         //roma=Double.valueOf(textRoma.getText());
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0",textTest.getText());
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){
@@ -478,6 +478,15 @@ public class MainController implements Initializable{
 
     }
 
+
+    public void generateReport() throws Exception{
+
+
+
+}
+
+
+
     /** Make sure that the values in the addItem method are valid numbers*/
     public boolean isNumeric(String str)
     {
@@ -495,7 +504,7 @@ public class MainController implements Initializable{
     public void updateTable()
     {
 
-        myEvents = Main.mKinveyClient.appData("eventsCollection", ItemEntity.class);
+        myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
         // this should be the final list that is displayed at the table
         //list = FXCollections.observableArrayList();
         list.clear();
