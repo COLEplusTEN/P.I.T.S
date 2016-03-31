@@ -64,6 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
         // Do any additional setup after loading the view, typically from a nib.
     }
     

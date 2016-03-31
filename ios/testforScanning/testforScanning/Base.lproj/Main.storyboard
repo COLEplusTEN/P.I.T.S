@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,48 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-Dq-ClP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-Dq-ClP">
                                 <rect key="frame" x="219" y="282" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-xY-LCZ" userLabel="CurrentAmountLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Amount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-xY-LCZ" userLabel="CurrentAmountLabel">
                                 <rect key="frame" x="74" y="158" width="137" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-80-wrr" userLabel="NameLB">
-                                <rect key="frame" x="108" y="108" width="55" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-80-wrr" userLabel="NameLB">
+                                <rect key="frame" x="74" y="108" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="ft7-cK-ecD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-AA-Qma" userLabel="Name">
-                                <rect key="frame" x="245" y="104" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-AA-Qma" userLabel="Name">
+                                <rect key="frame" x="226" y="104" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Qcz-rd-W7E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HyW-tN-xKL"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
-                                <rect key="frame" x="245" y="155" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
+                                <rect key="frame" x="226" y="155" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Po-hl1">
-                                <rect key="frame" x="194" y="213" width="50" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Po-hl1">
+                                <rect key="frame" x="188" y="213" width="63" height="30"/>
+                                <color key="backgroundColor" red="0.93128496408462524" green="0.87351006269454956" blue="0.66365987062454224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="63" id="XGs-qw-N1Z"/>
+                                    <constraint firstAttribute="height" constant="30" id="xhV-1X-mHr"/>
+                                </constraints>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ot2-uV-hxd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagliai's Inventory Tracking System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yki-bi-Wri">
+                                <rect key="frame" x="36" y="28" width="367" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="367" id="V70-tL-6qh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jlE-AA-Qma" firstAttribute="leading" secondItem="OOG-80-wrr" secondAttribute="trailing" constant="32" id="00A-wg-rhr"/>
+                            <constraint firstItem="EMi-yb-sZG" firstAttribute="trailing" secondItem="jlE-AA-Qma" secondAttribute="trailing" id="4LK-Cw-Vss"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eUI-Po-hl1" secondAttribute="bottom" constant="357" id="7mP-3w-bKb"/>
+                            <constraint firstItem="EMi-yb-sZG" firstAttribute="baseline" secondItem="8JC-xY-LCZ" secondAttribute="baseline" id="9x6-hz-Ppu"/>
+                            <constraint firstItem="OOG-80-wrr" firstAttribute="centerY" secondItem="jlE-AA-Qma" secondAttribute="centerY" id="Dxj-Ct-YeL"/>
+                            <constraint firstItem="eUI-Po-hl1" firstAttribute="centerX" secondItem="Yki-bi-Wri" secondAttribute="centerX" id="Ist-9t-NvT"/>
+                            <constraint firstItem="8JC-xY-LCZ" firstAttribute="leading" secondItem="OOG-80-wrr" secondAttribute="leading" id="OyC-3e-23X"/>
+                            <constraint firstItem="eUI-Po-hl1" firstAttribute="top" secondItem="8JC-xY-LCZ" secondAttribute="bottom" constant="34" id="Tvb-yx-Jdr"/>
+                            <constraint firstItem="OOG-80-wrr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="54" id="UDD-5p-Prt"/>
+                            <constraint firstItem="EMi-yb-sZG" firstAttribute="leading" secondItem="8JC-xY-LCZ" secondAttribute="trailing" constant="15" id="W2A-vi-xCv"/>
+                            <constraint firstItem="aUK-Dq-ClP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="282" id="WJG-i5-tYC"/>
+                            <constraint firstItem="Yki-bi-Wri" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="Xec-eM-9W3"/>
+                            <constraint firstItem="aUK-Dq-ClP" firstAttribute="centerX" secondItem="eUI-Po-hl1" secondAttribute="centerX" id="enP-RE-Wky"/>
+                            <constraint firstItem="OOG-80-wrr" firstAttribute="top" secondItem="Yki-bi-Wri" secondAttribute="bottom" constant="18" id="kVM-3G-8a1"/>
+                            <constraint firstItem="Yki-bi-Wri" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="nEN-CL-daB"/>
+                            <constraint firstItem="jlE-AA-Qma" firstAttribute="top" secondItem="Yki-bi-Wri" secondAttribute="bottom" constant="14" id="qtQ-Jp-7Hf"/>
+                            <constraint firstItem="jlE-AA-Qma" firstAttribute="leading" secondItem="EMi-yb-sZG" secondAttribute="leading" id="xRF-sk-PsO"/>
+                            <constraint firstItem="EMi-yb-sZG" firstAttribute="top" secondItem="jlE-AA-Qma" secondAttribute="bottom" constant="21" id="xqr-bu-Nm3"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="CurrentAmount" destination="EMi-yb-sZG" id="Xx0-nC-USw"/>
