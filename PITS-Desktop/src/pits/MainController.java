@@ -82,9 +82,6 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         configureTable();
-
-
-
         /*
         * Checking the focus on search bar every single time
         * */
@@ -186,6 +183,8 @@ public class MainController implements Initializable{
         /**
          * Build the dialog box and create all of the text fields/labels (maybe make the unit a dropdown box)
          * when they press ok, validate input and add into kinvey*/
+
+
         Dialog<ItemEntity> dialog = new Dialog<>();
         dialog.setTitle("Edit Item");
         dialog.setResizable(false);
@@ -283,6 +282,8 @@ public class MainController implements Initializable{
                 ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
+
+
                 }catch (IOException e){
                     System.out.println("Couldn't save new item! -> " + e);
                 }
@@ -313,6 +314,11 @@ public class MainController implements Initializable{
         /**
          * set up columns and pull from database*/
         colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
+
+        ItemEntity test = new ItemEntity();
+
+
+
         colUnit.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("unit"));
         colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("walmartHyvee"));
         colUSFoods.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("usFoods"));
@@ -456,6 +462,7 @@ public class MainController implements Initializable{
                 }
 
                 ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                // newItem.getMeta().setGloballyWritable(true);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
                 }catch (IOException e){

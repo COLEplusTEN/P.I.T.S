@@ -38,6 +38,9 @@ public class ItemEntity extends GenericJson {
         this.usFoods = usfoods;
         this.roma = roma;
         this.count = count;
+
+        
+
     }
 
     public ItemEntity(String name){
