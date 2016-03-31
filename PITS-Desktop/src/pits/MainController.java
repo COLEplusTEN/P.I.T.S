@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -32,6 +33,7 @@ import java.util.ResourceBundle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 
 
 public class MainController implements Initializable{
@@ -481,7 +483,9 @@ public class MainController implements Initializable{
 
     public void generateReport() throws Exception{
 
-
+        // generating the report
+        Report r = new Report(list);
+        r.execute();
 
 }
 
@@ -502,9 +506,7 @@ public class MainController implements Initializable{
     }
 
     public void updateTable()
-    {
-
-        myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
+    {        myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
         // this should be the final list that is displayed at the table
         //list = FXCollections.observableArrayList();
         list.clear();
@@ -515,12 +517,6 @@ public class MainController implements Initializable{
             {
                 if(!list.contains(item))
                     list.add(item);
-//                System.out.println(item.getId());
-//                System.out.println(item.getUnit());
-//                System.out.println(item.getWalmartHyvee());
-//                System.out.println(item.getUsFoods());
-//                System.out.println(item.getRoma());
-//                System.out.println("---------------------");
             }
             System.out.println("add everything to the list");
         } catch (IOException e) {
