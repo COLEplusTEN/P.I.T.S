@@ -8,22 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var id: UILabel!
-    
-    @IBOutlet weak var countField: UITextField!
+    @IBOutlet weak var NameLB: UILabel!
+    @IBOutlet var Name: UITextField!
+    @IBOutlet weak var CurrentAmountLB: UILabel!
+    @IBOutlet var CurrentAmount: UITextField!
     
     let store = KCSAppdataStore.storeWithOptions([
-        KCSStoreKeyCollectionName : "Events",
+        KCSStoreKeyCollectionName : "eventsCollection",
         KCSStoreKeyCollectionTemplateClass : Food.self
         ])
     
     @IBAction func submit(sender: AnyObject) {
-
+        
         let food = Food()
-        food._id = id.text
-        food.count = countField.text
+        food._id = Name.text
+        food.count = CurrentAmount.text
         food.roma = "16.00"
         food.unit = "test"
         food.usFoods = "16.00"
@@ -54,18 +55,45 @@ class ViewController: UIViewController {
             {
                 for r in results {
                     let c = r as? Food
-                    self.id?.text = c?._id
-                    self.countField?.text = c?.count
+                    self.Name?.text = c?._id
+                    self.CurrentAmount?.text = c?.count
                 }
             }
             }, withProgressBlock: nil)
     }
-
-       override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    //If the scangun returns, query the database for that object
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        var itemName:String = Name.text!
+        fetchItemFromDatabase(itemName)
+        return true
+    }
+    
+    func fetchItemFromDatabase(var itemName:String){
+        let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: itemName)
+        store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+            for obj in objectsOrNil {
+                print(obj)
+            }
+            
+            if let results = objectsOrNil as? NSArray
+            {
+                for r in results {
+                    let c = r as? Food
+                    self.Name?.text = c?._id
+                    self.CurrentAmount?.text = c?.count
+                }
+            }
+            }, withProgressBlock: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,7 +101,6 @@ class ViewController: UIViewController {
     
     
     
-
-
+    
+    
 }
-
