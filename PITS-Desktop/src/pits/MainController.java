@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -26,6 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -90,35 +92,59 @@ public class MainController implements Initializable{
 
         configureTable();
 
+        searchBar();
+
+
+
+     /*
+     * This works when the user double clicks on the row twice
+     * */
+
+
+        myTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+                            if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    System.out.println(myTable.getSelectionModel().getSelectedItem());
+                    try {
+
+                        String textName1  = myTable.getSelectionModel().getSelectedItem().getId();
+                        String textUnit1  = myTable.getSelectionModel().getSelectedItem().getUnit();
+                        String textWH1  = myTable.getSelectionModel().getSelectedItem().getWalmartHyvee();
+                        String textUSFoods1  = myTable.getSelectionModel().getSelectedItem().getUsFoods();
+                        String textRoma1 = myTable.getSelectionModel().getSelectedItem().getRoma();
+                        String textCount1  = myTable.getSelectionModel().getSelectedItem().getCount();
+
+                        editItemClick(textName1, textUnit1, textWH1,textUSFoods1,textRoma1,textCount1);
+                    } catch (Exception e) {
+                        System.out.println("the function will not work");
+                    }
+                }
+            }
+        });
+
+
+    }
 
 
 
 
+    public void searchBar(){
 
 
-
-
-//
-//        img.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-//
-//            @Override
-//            public void handle(MouseEvent event) {
-//                System.out.println("Tile pressed ");
-//                event.consume();
-//            }
-//        });
-
-
-
-
-        /*
+                /*
         * Checking the focus on search bar every single time
         * */
         TextField yourTextField = filterField;
 
+        // yourTextField.setStyle("-fx-focus-color: transparent;");
 
 
-        yourTextField.focusedProperty().addListener(new ChangeListener<Boolean>()
+        yourTextField.setFocusTraversable(false);
+
+
+        filterField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
@@ -155,7 +181,7 @@ public class MainController implements Initializable{
 
 
 
- }
+                }
                 // this is when we are out of focus
                 else
                 {
@@ -170,42 +196,27 @@ public class MainController implements Initializable{
                 sortedData.comparatorProperty().bind(myTable.comparatorProperty());
 
                 // 5. Add sorted (and filtered) data to the table.
-                 myTable.setItems(sortedData);
+                myTable.setItems(sortedData);
             }
         });
 
 
-     /*
-     * This works when the user double clicks on the row twice
-     * */
-
-
-        myTable.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-                            if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
-                    System.out.println(myTable.getSelectionModel().getSelectedItem());
-                    try {
-
-                        String textName1  = myTable.getSelectionModel().getSelectedItem().getId();
-                        String textUnit1  = myTable.getSelectionModel().getSelectedItem().getUnit();
-                        String textWH1  = myTable.getSelectionModel().getSelectedItem().getWalmartHyvee();
-                        String textUSFoods1  = myTable.getSelectionModel().getSelectedItem().getUsFoods();
-                        String textRoma1 = myTable.getSelectionModel().getSelectedItem().getRoma();
-                        String textCount1  = myTable.getSelectionModel().getSelectedItem().getCount();
-
-                        editItemClick(textName1, textUnit1, textWH1,textUSFoods1,textRoma1,textCount1);
-                    } catch (Exception e) {
-                        System.out.println("the function will not work");
-                    }
-                }
-            }
-        });
 
 
 
     }
+
+
+    // when user clicks the refresh image
+    public void refresh(){
+        System.out.println("Table Updated !!!");
+
+        updateTable();
+
+    }
+
+
+
 
     // this is for add new item
     public  void editItemClick(String textName1,String textUnit1,String textWH1,String textUSFoods1,String textRoma1,String textCount1) throws Exception {
@@ -429,9 +440,6 @@ public class MainController implements Initializable{
         TextField textUSFoods = new TextField();
         TextField textRoma = new TextField();
 
-
-
-
         GridPane grid = new GridPane();
         grid.add(labelName, 1,1);
         grid.add(labelUnit,1,2);
@@ -542,7 +550,8 @@ public class MainController implements Initializable{
     }
 
     public void updateTable()
-    {        myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
+    {
+        myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
         // this should be the final list that is displayed at the table
         //list = FXCollections.observableArrayList();
         list.clear();
