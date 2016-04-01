@@ -5,11 +5,17 @@ import com.kinvey.nativejava.AppData;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -30,6 +36,12 @@ import java.util.*;
 
 public class Report {
 
+
+
+    @FXML
+    private AnchorPane content;
+
+
     public ObservableList<ItemEntity> reportList ;
 
     public Report(ObservableList<ItemEntity> list)
@@ -38,7 +50,8 @@ public class Report {
     }
 
 
-    public void execute(){
+    public void execute() throws Exception{
+
 
 
         // Create the custom dialog.
@@ -52,6 +65,9 @@ public class Report {
 // Set the button types.
         ButtonType loginButtonType = new ButtonType("Generate Report", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+     //   ButtonType test = new ButtonType("Generate Report", ButtonBar.ButtonData.OK_DONE);
+
 
 // Create the username and password labels and fields.
         GridPane grid = new GridPane();
@@ -67,9 +83,9 @@ public class Report {
 
         grid.add(new Label("Name of the File: "), 0, 0);
         grid.add(username, 1, 0);
-        grid.add(new Label("Location of the File: "), 0, 1);
-        grid.add(password, 1, 1);
-        grid.add(new Label("Browse"),3,1);
+       // grid.add(new Label("Location of the File: "), 0, 1);
+       // grid.add(password, 1, 1);
+       // grid.add(new Label("Browse"),3,1);
         // grid.add(btn,2,0);
 
         // Enable/Disable login button depending on whether a username was entered.
@@ -96,20 +112,18 @@ public class Report {
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
+        // location and fileName
         String fileName = username.getText();
         String location = password.getText();
 
         result.ifPresent(usernamePassword -> {
             System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
-
-
-
         });
 
 
 
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet(fileName);
+        HSSFSheet sheet = workbook.createSheet("Monthly Report");
 
 
         Map<Integer, Object[]> data = new TreeMap<>();
@@ -153,7 +167,7 @@ public class Report {
             /*
             This has to be changed later
              */
-            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\sandi\\Google Drive\\Monthly Report.xls"));
+            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\sandi\\Google Drive\\" + fileName + ".xls"));
             workbook.write(out);
             out.close();
             System.out.println("Excel written successfully..");
