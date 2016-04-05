@@ -2,6 +2,7 @@ package pits;
 
 import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
+import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,13 +12,18 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -77,7 +83,8 @@ public class MainController implements Initializable{
 
         configureTable();
 
-     /*
+
+        /*
      * This works when the user double clicks on the row twice
      * */
 
@@ -111,8 +118,12 @@ public class MainController implements Initializable{
     public void statusBar(String str){
 
         statusBar.applyCss();
-
         statusBar.setText(str);
+
+        Time time = new TIme
+
+
+
     }
 
 
