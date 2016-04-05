@@ -15,9 +15,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBuilder;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -39,6 +45,8 @@ public class MainController implements Initializable{
     TableColumn colCount;
     @FXML
     Button addItem;
+    @FXML
+    Label timeText;
 
 
     public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
@@ -67,16 +75,21 @@ public class MainController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+        /*
+        Updating the time : when it is run for the first time :
+
+         */
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
+        timeText.setText(timeStamp);
+
+
+
         configureTable();
-
-        searchBar();
-
-
 
      /*
      * This works when the user double clicks on the row twice
      * */
-
 
         myTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -100,8 +113,6 @@ public class MainController implements Initializable{
                 }
             }
         });
-
-
     }
 
 
@@ -109,19 +120,11 @@ public class MainController implements Initializable{
 
     public void searchBar(){
 
-
-                /*
+        /*
         * Checking the focus on search bar every single time
         * */
-        TextField yourTextField = filterField;
 
-        // yourTextField.setStyle("-fx-focus-color: transparent;");
-
-
-        //yourTextField.setFocusTraversable(false);
-
-
-        // chagnedfrom focusedProperty
+        // chagned from focusedProperty
         filterField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
@@ -156,11 +159,8 @@ public class MainController implements Initializable{
                 if (newPropertyValue)
                 {
                     System.out.println("Textfield on focus");
-
-
-
                 }
-                // this is when we are out of focus
+
                 else
                 {
                     System.out.println("Textfield out focus");
@@ -178,22 +178,18 @@ public class MainController implements Initializable{
             }
         });
 
-
-
-
-
     }
 
 
     // when user clicks the refresh image
-    public void refresh(){
+    public void refresh() {
         System.out.println("Table Updated !!!");
 
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
+        timeText.setText(timeStamp);
+
         updateTable();
-
     }
-
-
 
 
     // this is for add new item
@@ -245,9 +241,7 @@ public class MainController implements Initializable{
         grid.add(textCount,2,6);
 
 
-
         dialog.getDialogPane().setContent(grid);
-
         ButtonType buttonOK = new ButtonType("Save Changes", ButtonBar.ButtonData.OK_DONE);
 
 

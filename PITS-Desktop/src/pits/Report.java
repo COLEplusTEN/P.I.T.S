@@ -35,10 +35,12 @@ public class Report {
         this.reportList = list;
     }
 
+    /*
+    This function will ask the user for the  location and will call generateFile method
+     */
+
 
     public void execute() throws Exception{
-
-
         // Create the custom dialog.
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Save File");
@@ -104,6 +106,10 @@ public class Report {
         Optional<String> result = dialog.showAndWait();
 
     }
+
+    /*
+    This method will just generate the file in the selected location
+     */
 
     public static void generateFile(TextField username, File fileLocation, ObservableList<ItemEntity> reportList){
 
