@@ -15,6 +15,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
+<?import java.net.URL?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pits.MainController">
    <top>
       <HBox prefHeight="59.0" prefWidth="820.0" BorderPane.alignment="CENTER">
@@ -36,6 +37,11 @@
                </HBox.margin></TextField>
             <Canvas height="46.0" width="42.0" />
          </children>
+
+         <stylesheets>
+            <URL value="@styleSheet.css"/>
+         </stylesheets>
+
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
