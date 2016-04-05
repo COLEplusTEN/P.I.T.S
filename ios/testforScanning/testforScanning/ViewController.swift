@@ -65,16 +65,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
-        // Do any additional setup after loading the view, typically from a nib.
+        self.Name.becomeFirstResponder()
     }
     
     //If the scangun returns, query the database for that object
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         var itemName:String = Name.text!
         fetchItemFromDatabase(itemName)
+        if (textField == self.Name) {
+            self.CurrentAmount.becomeFirstResponder()
+            
+        }
+        
         return true
+        //self.CurrentAmount.becomeFirstResponder()
     }
     
     func fetchItemFromDatabase(var itemName:String){

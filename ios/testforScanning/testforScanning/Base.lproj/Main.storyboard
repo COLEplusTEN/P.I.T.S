@@ -54,8 +54,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pagliai's Inventory Tracking System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yki-bi-Wri">
+                                <rect key="frame" x="24" y="28" width="367" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="367" id="OhT-ix-zNH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Po-hl1">
-                                <rect key="frame" x="176" y="213" width="63" height="30"/>
+                                <rect key="frame" x="189" y="214" width="63" height="30"/>
                                 <color key="backgroundColor" red="0.93128496408462524" green="0.87351006269454956" blue="0.66365987062454224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="FaQ-Nt-LGY"/>
@@ -73,14 +81,6 @@
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ot2-uV-hxd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pagliai's Inventory Tracking System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yki-bi-Wri">
-                                <rect key="frame" x="24" y="28" width="367" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="367" id="OhT-ix-zNH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="aUK-Dq-ClP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="282" id="1Uk-eI-qHi"/>
