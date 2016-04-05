@@ -36,11 +36,11 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("Pagliai's Inventory Tracking System");
         primaryStage.setScene(new Scene(root, 1220, 850));
+
+
+
         primaryStage.setResizable(false);
         primaryStage.show();
-
-
-
 
     }
 

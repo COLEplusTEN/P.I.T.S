@@ -73,7 +73,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        stausBar("Welcome Back !");
+        statusBar("Welcome Back !");
 
         configureTable();
 
@@ -108,7 +108,9 @@ public class MainController implements Initializable{
 
 
 
-    public void stausBar(String str){
+    public void statusBar(String str){
+
+        statusBar.applyCss();
 
         statusBar.setText(str);
     }
@@ -180,7 +182,7 @@ public class MainController implements Initializable{
     // when user clicks the refresh image
     public void refresh() {
 
-        stausBar("Data refreshed !!!");
+        statusBar("Data refreshed !!!");
 
         System.out.println("Table Updated !!!");
 
@@ -332,11 +334,8 @@ public class MainController implements Initializable{
         {
             System.out.println("Result is present");
             updateTable();
+            statusBar("Item Edited");
         }
-
-
-
-        stausBar("Item Edited");
     }
 
 
@@ -349,8 +348,6 @@ public class MainController implements Initializable{
         colName.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("id"));
 
         ItemEntity test = new ItemEntity();
-
-
 
         colUnit.setCellValueFactory(new PropertyValueFactory<ItemEntity, String>("unit"));
         colWalmartHyvee.setCellValueFactory(new PropertyValueFactory<ItemEntity, Double>("walmartHyvee"));
@@ -402,6 +399,7 @@ public class MainController implements Initializable{
 
 
             updateTable();
+            statusBar("Item Deleted !");
 
 
         }
@@ -409,7 +407,7 @@ public class MainController implements Initializable{
             System.out.println("Exit : pressed");
         }
 
-        stausBar("Item Deleted !");
+
 
     }
 
@@ -520,12 +518,14 @@ public class MainController implements Initializable{
         Optional<ItemEntity> result = dialog.showAndWait();
         if(result.isPresent())
         {
+
             System.out.println("Result is present");
+            statusBar("New Item Added");
             updateTable();
         }
 
 
-        stausBar("New Item Added");
+
 
     }
 
@@ -536,7 +536,7 @@ public class MainController implements Initializable{
         Report r = new Report(list);
         r.execute();
 
-        stausBar("Report Generated");
+        statusBar("Report Generated");
 
     }
 
@@ -583,9 +583,4 @@ public class MainController implements Initializable{
         //masterData.addAll(list);
 
     }
-
-
-
 }
-
-
