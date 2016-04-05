@@ -15,13 +15,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextBuilder;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Optional;
@@ -47,6 +42,8 @@ public class MainController implements Initializable{
     Button addItem;
     @FXML
     Label timeText;
+    @FXML
+    Label statusBar;
 
 
     public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
@@ -76,14 +73,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        /*
-        Updating the time : when it is run for the first time :
-
-         */
-        String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
-        timeText.setText(timeStamp);
-
-
+        stausBar("Welcome Back !");
 
         configureTable();
 
@@ -116,6 +106,12 @@ public class MainController implements Initializable{
     }
 
 
+
+
+    public void stausBar(String str){
+
+        statusBar.setText(str);
+    }
 
 
     public void searchBar(){
@@ -183,13 +179,25 @@ public class MainController implements Initializable{
 
     // when user clicks the refresh image
     public void refresh() {
+
+        stausBar("Data refreshed !!!");
+
         System.out.println("Table Updated !!!");
 
-        String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
-        timeText.setText(timeStamp);
+        lastUpdated();
 
         updateTable();
     }
+
+
+
+    public void lastUpdated(){
+
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
+        timeText.setText(timeStamp);
+    }
+
+
 
 
     // this is for add new item
@@ -316,6 +324,8 @@ public class MainController implements Initializable{
         }
 
 
+
+        stausBar("Item Edited");
     }
 
 
@@ -387,6 +397,8 @@ public class MainController implements Initializable{
         else{
             System.out.println("Exit : pressed");
         }
+
+        stausBar("Item Deleted !");
 
     }
 
@@ -494,16 +506,20 @@ public class MainController implements Initializable{
         }
 
 
+        stausBar("New Item Added");
+
     }
 
 
-    public void generateReport() throws Exception{
+    public void generateReport() throws Exception {
 
         // generating the report
         Report r = new Report(list);
         r.execute();
 
-}
+        stausBar("Report Generated");
+
+    }
 
 
 
@@ -523,6 +539,9 @@ public class MainController implements Initializable{
 
     public void updateTable()
     {
+
+        lastUpdated();
+
         myEvents = Main.mKinveyClient.appData(Main.nameOfCollection, ItemEntity.class);
         // this should be the final list that is displayed at the table
         //list = FXCollections.observableArrayList();
