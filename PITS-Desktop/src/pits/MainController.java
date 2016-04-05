@@ -217,6 +217,7 @@ public class MainController implements Initializable{
         Label labelUSFoods = new Label("USFoods Price:");
         Label labelRoma = new Label("Roma Price:");
         Label labelCount =  new Label("Count:");
+        Label labelPrice = new Label("Selected Price:");
 
 
         TextField textName = new TextField();
@@ -225,6 +226,10 @@ public class MainController implements Initializable{
         TextField textUSFoods = new TextField();
         TextField textRoma = new TextField();
         TextField textCount =  new TextField();
+
+        ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList(
+                "Other", "USFoods", "Roma"));
+        cb.setValue("Other");
 
         textName.setEditable(false);
         textName.setText(textName1);
@@ -241,12 +246,15 @@ public class MainController implements Initializable{
         grid.add(labelUSFoods,1,4);
         grid.add(labelRoma,1,5);
         grid.add(labelCount,1,6);
+        grid.add(labelPrice,1,7);
         grid.add(textName, 2,1);
         grid.add(textUnit,2,2);
         grid.add(textWH,2,3);
         grid.add(textUSFoods,2,4);
         grid.add(textRoma,2,5);
         grid.add(textCount,2,6);
+        grid.add(cb,2,7);
+
 
 
         dialog.getDialogPane().setContent(grid);
@@ -299,7 +307,10 @@ public class MainController implements Initializable{
 
                 }
 
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count);
+                String selectedPrice = String.valueOf(cb.getValue());
+
+
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,count,selectedPrice);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();
 
@@ -417,6 +428,11 @@ public class MainController implements Initializable{
         Label labelWH = new Label("Walmart/Hyvee Price:");
         Label labelUSFoods = new Label("USFoods Price:");
         Label labelRoma = new Label("Roma Price:");
+        Label labelPrice = new Label("Selected Price: ");
+
+        ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList(
+                "Other", "USFoods", "Roma"));
+        cb.setValue("Other");
 
         TextField textName = new TextField();
         TextField textUnit = new TextField();
@@ -430,11 +446,13 @@ public class MainController implements Initializable{
         grid.add(labelWH,1,3);
         grid.add(labelUSFoods,1,4);
         grid.add(labelRoma,1,5);
+        grid.add(labelPrice,1,6);
         grid.add(textName, 2,1);
         grid.add(textUnit,2,2);
         grid.add(textWH,2,3);
         grid.add(textUSFoods,2,4);
         grid.add(textRoma,2,5);
+        grid.add(cb,2,6);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -481,8 +499,9 @@ public class MainController implements Initializable{
                         roma = textRoma.getText();
                         //roma=Double.valueOf(textRoma.getText());
                 }
-
-                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0");
+                
+                String selectedPrice = String.valueOf(cb.getValue());
+                ItemEntity newItem = new ItemEntity(textName.getText(),textUnit.getText(),walmartHyvee,USFoods,roma,"0",selectedPrice);
                 // newItem.getMeta().setGloballyWritable(true);
                 try{
                     ItemEntity result = myEvents.saveBlocking(newItem).execute();

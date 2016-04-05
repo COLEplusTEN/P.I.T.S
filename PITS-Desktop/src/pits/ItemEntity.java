@@ -23,6 +23,8 @@ public class ItemEntity extends GenericJson {
     private String roma;
     @Key
     private String count;
+    @Key
+    private String selectedPrice;
 
 
 
@@ -35,9 +37,16 @@ public class ItemEntity extends GenericJson {
         this.usFoods = usfoods;
         this.roma = roma;
         this.count = count;
+    }
 
-        
-
+    public ItemEntity(String name, String unit, String walmartHyvee, String usfoods, String roma, String count, String selectedPrice) {
+        this.id = name;
+        this.unit = unit;
+        this.walmartHyvee = walmartHyvee;
+        this.usFoods = usfoods;
+        this.roma = roma;
+        this.count = count;
+        this.selectedPrice = selectedPrice;
     }
 
     public ItemEntity(String name){
@@ -117,6 +126,11 @@ public class ItemEntity extends GenericJson {
         this.checkedProperty().set(checked);
     }
 
+    public String getSelectedPrice() {
+        return selectedPrice;
+    }
 
-
+    public void setSelectedPrice(String selectedPrice) {
+        this.selectedPrice = selectedPrice;
+    }
 }
