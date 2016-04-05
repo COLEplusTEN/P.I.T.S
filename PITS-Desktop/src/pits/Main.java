@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import com.kinvey.nativejava.Client;
 
@@ -25,17 +26,24 @@ public class Main extends Application {
 
     public static final String nameOfCollection = "eventsCollection";
 
+    public static Stage pStage;
+
     // app secret : 4e43176fdfe14d44878492851d93385f
 
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        pStage =  primaryStage;
+
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("Pagliai's Inventory Tracking System");
         primaryStage.setScene(new Scene(root, 1220, 850));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+
+
 
     }
 

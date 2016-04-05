@@ -141,9 +141,10 @@ public class MainController implements Initializable{
         // yourTextField.setStyle("-fx-focus-color: transparent;");
 
 
-        yourTextField.setFocusTraversable(false);
+        //yourTextField.setFocusTraversable(false);
 
 
+        // chagnedfrom focusedProperty
         filterField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override

@@ -5,16 +5,27 @@ import com.kinvey.nativejava.AppData;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBuilder;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -22,11 +33,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by sandi on 3/31/2016.
@@ -53,7 +64,6 @@ public class Report {
     public void execute() throws Exception{
 
 
-
         // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Save File");
@@ -63,11 +73,8 @@ public class Report {
 //        dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
 
 // Set the button types.
-        ButtonType loginButtonType = new ButtonType("Generate Report", ButtonBar.ButtonData.OK_DONE);
+        ButtonType loginButtonType = new ButtonType("Browse Location", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
-     //   ButtonType test = new ButtonType("Generate Report", ButtonBar.ButtonData.OK_DONE);
-
 
 // Create the username and password labels and fields.
         GridPane grid = new GridPane();
@@ -77,16 +84,15 @@ public class Report {
 
         TextField username = new TextField();
         username.setPromptText("Monthly Report");
-        PasswordField password = new PasswordField();
+        TextField password = new TextField();
         password.setPromptText("C://Reports");
-        ButtonType btn =  new ButtonType("Test", ButtonBar.ButtonData.APPLY);
 
         grid.add(new Label("Name of the File: "), 0, 0);
         grid.add(username, 1, 0);
        // grid.add(new Label("Location of the File: "), 0, 1);
-       // grid.add(password, 1, 1);
-       // grid.add(new Label("Browse"),3,1);
-        // grid.add(btn,2,0);
+        // grid.add(password, 1, 1);
+        // grid.add(new Label("Browse"),3,1);
+        //grid.add(btn,2,0);
 
         // Enable/Disable login button depending on whether a username was entered.
         Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
@@ -102,9 +108,22 @@ public class Report {
 // Request focus on the username field by default.
         Platform.runLater(() -> username.requestFocus());
 
+
+
+
+
+
 // Convert the result to a username-password-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == loginButtonType) {
+                System.out.println("This works, why not the other one");
+
+
+                DirectoryChooser dc = new DirectoryChooser();
+                File file = dc.showDialog(null);
+                if (file != null) {
+                    file = new File(file.getAbsolutePath() + "/fileName.xls");}
+
                 return new Pair<>(username.getText(), password.getText());
             }
             return null;
@@ -112,13 +131,17 @@ public class Report {
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
-        // location and fileName
-        String fileName = username.getText();
-        String location = password.getText();
 
-        result.ifPresent(usernamePassword -> {
-            System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
-        });
+
+
+        //  fileName
+        System.out.println("");
+        String fileName = username.getText();
+
+        System.out.println("The name of the file is " + fileName);
+
+
+
 
 
 
@@ -127,10 +150,12 @@ public class Report {
 
 
         Map<Integer, Object[]> data = new TreeMap<>();
-     data.put(1, new Object[] {"Name", "Unit", "Walmart/Hyvee","US Foods","Roma ","Count"});
+
+        data.put(1, new Object[] {"Monthly Report for Paglia's Pizza"});
+     data.put(2, new Object[] {"Name", "Unit", "Walmart/Hyvee","US Foods","Roma ","Count"});
 
 
-            int count = 1;
+            int count = 2;
             for(ItemEntity item: reportList)
             {
                 count++;
@@ -177,6 +202,18 @@ public class Report {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
+//
+//        DirectoryChooser dc = new DirectoryChooser();
+//        File file = dc.showDialog(null);
+//        if (file != null) {
+//            file = new File(file.getAbsolutePath() + "/dafaultFilename.extension");}
+//
+//
+
+
 
     }
 
