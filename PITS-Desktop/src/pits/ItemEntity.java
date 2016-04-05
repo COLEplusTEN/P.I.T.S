@@ -2,10 +2,7 @@ package pits;
 
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.Key;
-import com.kinvey.java.model.KinveyMetaData;
-import javafx.beans.property.*;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.Event;
+import javafx.beans.property.SimpleBooleanProperty;
 
 
 /**

@@ -1,43 +1,22 @@
 package pits;
 
-
-import com.kinvey.nativejava.AppData;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextBuilder;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.util.Pair;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import javax.imageio.ImageIO;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by sandi on 3/31/2016.
@@ -48,14 +27,10 @@ import java.util.logging.Logger;
 public class Report {
 
 
-
-    @FXML
-    private AnchorPane content;
-
-
     public ObservableList<ItemEntity> reportList ;
 
     public Report(ObservableList<ItemEntity> list)
+
     {
         this.reportList = list;
     }
@@ -65,108 +40,94 @@ public class Report {
 
 
         // Create the custom dialog.
-        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Save File");
-        dialog.setHeaderText("Enter the Name for the file and location");
+        dialog.setHeaderText("Enter the Name for the file: ");
 
-//        // Set the icon (must be included in the project).
-//        dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
 
-// Set the button types.
-        ButtonType loginButtonType = new ButtonType("Browse Location", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+        // Set the button types.
+        ButtonType browseLocationBTN = new ButtonType("Browse Location", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(browseLocationBTN, ButtonType.CANCEL);
 
-// Create the username and password labels and fields.
+        // Create the userLocation and password labels and fields.
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        TextField username = new TextField();
-        username.setPromptText("Monthly Report");
-        TextField password = new TextField();
-        password.setPromptText("C://Reports");
+        TextField userLocation = new TextField();
+        userLocation.setPromptText("Monthly Report");
 
-        grid.add(new Label("Name of the File: "), 0, 0);
-        grid.add(username, 1, 0);
-       // grid.add(new Label("Location of the File: "), 0, 1);
-        // grid.add(password, 1, 1);
-        // grid.add(new Label("Browse"),3,1);
-        //grid.add(btn,2,0);
+        grid.add(new Label("File Name: "), 0, 0);
+        grid.add(userLocation, 1, 0);
 
-        // Enable/Disable login button depending on whether a username was entered.
-        Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+
+        // Enable/Disable login button depending on whether a userLocation was entered.
+        Node loginButton = dialog.getDialogPane().lookupButton(browseLocationBTN);
         loginButton.setDisable(true);
 
         // Do some validation (using the Java 8 lambda syntax).
-        username.textProperty().addListener((observable, oldValue, newValue) -> {
+        userLocation.textProperty().addListener((observable, oldValue, newValue) -> {
             loginButton.setDisable(newValue.trim().isEmpty());
         });
 
         dialog.getDialogPane().setContent(grid);
 
-// Request focus on the username field by default.
-        Platform.runLater(() -> username.requestFocus());
+        // Request focus on the userLocation field by default.
+        Platform.runLater(() -> userLocation.requestFocus());
 
 
 
-
-
-
-// Convert the result to a username-password-pair when the login button is clicked.
+        /*
+        This will run when browse locaiton button is clicked
+         */
         dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == loginButtonType) {
-                System.out.println("This works, why not the other one");
-
+            if (dialogButton == browseLocationBTN) {
 
                 DirectoryChooser dc = new DirectoryChooser();
-                File file = dc.showDialog(null);
-                if (file != null) {
-                    file = new File(file.getAbsolutePath() + "/fileName.xls");}
+                File fileLocation = dc.showDialog(null);
+                if (fileLocation != null) {
+                    fileLocation = new File(fileLocation.getAbsolutePath());
+                }
 
-                return new Pair<>(username.getText(), password.getText());
+                /*
+                Generate File is called here
+                 */
+                generateFile(userLocation,fileLocation,reportList);
+
+                return (userLocation.getText());
             }
             return null;
         });
 
-        Optional<Pair<String, String>> result = dialog.showAndWait();
 
+        Optional<String> result = dialog.showAndWait();
 
+    }
 
+    public static void generateFile(TextField username, File fileLocation, ObservableList<ItemEntity> reportList){
 
-        //  fileName
-        System.out.println("");
         String fileName = username.getText();
 
-        System.out.println("The name of the file is " + fileName);
-
-
-
-
-
+        System.out.println("");
+        System.out.println("FileName:" + fileName + "File Location: " + fileLocation) ;
 
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Monthly Report");
 
-
         Map<Integer, Object[]> data = new TreeMap<>();
 
         data.put(1, new Object[] {"Monthly Report for Paglia's Pizza"});
-     data.put(2, new Object[] {"Name", "Unit", "Walmart/Hyvee","US Foods","Roma ","Count"});
+        data.put(2, new Object[] {"Name", "Unit", "Walmart/Hyvee","US Foods","Roma ","Count"});
+        int count = 2;
+        for(ItemEntity item: reportList)
+        {
+            count++;
+            data.put(count, new Object[] {item.getId() , item.getUnit() , item.getWalmartHyvee(), item.getUsFoods(),item.getRoma() ,item.getCount()});
+        }
 
-
-            int count = 2;
-            for(ItemEntity item: reportList)
-            {
-                count++;
-              //  data.put(count+"", new Object[] {1d, "John", 1500000d});
-                data.put(count, new Object[] {item.getId() , item.getUnit() , item.getWalmartHyvee(), item.getUsFoods(),item.getRoma() ,item.getCount()});
-        //  System.out.println(item.getId() + " " + item.getUnit() + " " + item.getWalmartHyvee() + " " + item.getUsFoods() + " " + item.getRoma() + " " + item.getCount());
-
-
-
-            }
-            System.out.println("add everything to the list");
+        System.out.println("");
+        System.out.println("add everything to the list");
 
 
         Set<Integer> keyset = data.keySet();
@@ -189,10 +150,9 @@ public class Report {
         }
 
         try {
-            /*
-            This has to be changed later
-             */
-            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\sandi\\Google Drive\\" + fileName + ".xls"));
+
+            FileOutputStream out = new FileOutputStream(new File( fileLocation+ "\\" + fileName + ".xls"));
+            System.out.println("The total was === "+  fileLocation+ "\\" + fileName + ".xls");
             workbook.write(out);
             out.close();
             System.out.println("Excel written successfully..");
@@ -203,20 +163,6 @@ public class Report {
             e.printStackTrace();
         }
 
-
-
-//
-//        DirectoryChooser dc = new DirectoryChooser();
-//        File file = dc.showDialog(null);
-//        if (file != null) {
-//            file = new File(file.getAbsolutePath() + "/dafaultFilename.extension");}
-//
-//
-
-
-
     }
-
-
 
 }
