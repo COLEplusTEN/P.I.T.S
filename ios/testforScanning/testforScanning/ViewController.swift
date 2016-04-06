@@ -66,6 +66,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
         self.Name.becomeFirstResponder()
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 200, y: 200), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.CGPath
+        shapeLayer.fillColor = UIColor.whiteColor().CGColor
+        view.layer.addSublayer(shapeLayer)
     }
     
     //If the scangun returns, query the database for that object
