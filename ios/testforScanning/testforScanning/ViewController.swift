@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
         self.Name.becomeFirstResponder()
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 0, y: 120), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 205, y: 485), radius: CGFloat(25), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.CGPath
