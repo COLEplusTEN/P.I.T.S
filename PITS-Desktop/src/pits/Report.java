@@ -27,6 +27,8 @@ import java.util.*;
 public class Report {
 
 
+     public String reportGenerationStatus = "";
+
     public ObservableList<ItemEntity> reportList ;
 
     public Report(ObservableList<ItemEntity> list)
@@ -40,7 +42,7 @@ public class Report {
      */
 
 
-    public void execute() throws Exception{
+    public String execute() throws Exception{
         // Create the custom dialog.
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Save File");
@@ -95,15 +97,16 @@ public class Report {
                 /*
                 Generate File is called here
                  */
-                generateFile(userLocation,fileLocation,reportList);
+                 generateFile(userLocation,fileLocation,reportList);
 
                 return (userLocation.getText());
             }
             return null;
         });
-
-
         Optional<String> result = dialog.showAndWait();
+
+
+        return reportGenerationStatus;
 
     }
 
@@ -111,7 +114,9 @@ public class Report {
     This method will just generate the file in the selected location
      */
 
-    public static void generateFile(TextField username, File fileLocation, ObservableList<ItemEntity> reportList){
+    public  void generateFile(TextField username, File fileLocation, ObservableList<ItemEntity> reportList){
+
+
 
         String fileName = username.getText();
 
@@ -162,6 +167,13 @@ public class Report {
             workbook.write(out);
             out.close();
             System.out.println("Excel written successfully..");
+            reportGenerationStatus = "Report Generated !!!";
+
+            /*
+            For the status Bar
+             */
+          //  MainController test = new MainController();
+           // test.statusBar("Report Generated;");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

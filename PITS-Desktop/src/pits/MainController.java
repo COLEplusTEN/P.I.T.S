@@ -2,7 +2,8 @@ package pits;
 
 import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
-import javafx.animation.FadeTransition;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,21 +13,19 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 
 
 public class MainController implements Initializable{
@@ -49,7 +48,10 @@ public class MainController implements Initializable{
     @FXML
     Label timeText;
     @FXML
-    Label statusBar;
+    public Label statusBar;
+    @FXML
+    ImageView refreshImage;
+
 
 
     public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
@@ -59,6 +61,8 @@ public class MainController implements Initializable{
     //Search bar :
     @FXML
     private TextField filterField;
+
+
     @FXML
     TableView<ItemEntity> myTable;
 
@@ -82,6 +86,8 @@ public class MainController implements Initializable{
         statusBar("Welcome Back !");
 
         configureTable();
+
+        searchBar();
 
 
         /*
@@ -113,27 +119,54 @@ public class MainController implements Initializable{
     }
 
 
+    public void statusBar(String str)   {
+
+        /*
+        CSS is called in the Main.fxml : so we do not have to call that anymore !
+         */
+
+        ReminderBeep test = new ReminderBeep(4);
 
 
-    public void statusBar(String str){
-
-        statusBar.applyCss();
+        String returnedVal  = test.newMethod();
         statusBar.setText(str);
 
-        Time time = new TIme
 
+//        if(returnedVal.equals("we were here")){
+//            statusBar.setDisable(true);
+//            statusBar.setVisible(false);
+//        }
+
+
+
+        System.out.println("Came back from there");
+//      System.out.println("About to schedule task.");
+//        new ReminderBeep(5);
+//        System.out.println("Task scheduled.");
+
+
+
+//    public static void main(String args[]) {
+//      System.out.println("About to schedule task.");
+//        new ReminderBeep(5);
+//        System.out.println("Task scheduled.");
+//    }
 
 
     }
 
 
+
     public void searchBar(){
+
+
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
 
         /*
         * Checking the focus on search bar every single time
         * */
 
-        // chagned from focusedProperty
+        // changed from focusedProperty
         filterField.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
@@ -162,6 +195,18 @@ public class MainController implements Initializable{
                         return false; // Does not match.
                     });
                 });
+
+
+
+
+
+//
+//                filterField.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+//                    if(newValue && firstTime.get()){
+//                        Main.pStage.requestFocus(); // Delegate the focus to container
+//                        firstTime.setValue(false); // Variable value changed for future references
+//                    }
+//                });
 
 
                 // this is when there is a focus .... and we activate the search methods
@@ -193,6 +238,8 @@ public class MainController implements Initializable{
     // when user clicks the refresh image
     public void refresh() {
 
+        refreshImage.requestFocus();
+
         statusBar("Data refreshed !!!");
 
         System.out.println("Table Updated !!!");
@@ -200,12 +247,13 @@ public class MainController implements Initializable{
         lastUpdated();
 
         updateTable();
+
+        searchBar();
     }
 
 
 
     public void lastUpdated(){
-
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH::mm::ss").format(Calendar.getInstance().getTime());
         timeText.setText(timeStamp);
     }
@@ -240,8 +288,7 @@ public class MainController implements Initializable{
         TextField textRoma = new TextField();
         TextField textCount =  new TextField();
 
-        ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList(
-                "Other", "USFoods", "Roma"));
+        ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList("Other", "USFoods", "Roma"));
         cb.setValue("Other");
 
         textName.setEditable(false);
@@ -534,10 +581,6 @@ public class MainController implements Initializable{
             statusBar("New Item Added");
             updateTable();
         }
-
-
-
-
     }
 
 
@@ -545,10 +588,10 @@ public class MainController implements Initializable{
 
         // generating the report
         Report r = new Report(list);
-        r.execute();
-
-        statusBar("Report Generated");
-
+       //  r.execute();
+        String returnedStatus =  r.execute();
+        System.out.println("The returned status was : " + returnedStatus);
+        statusBar(returnedStatus);
     }
 
 
