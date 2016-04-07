@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var NameLB: UILabel!
+    @IBOutlet weak var UnitLB: UILabel!
     @IBOutlet var Name: UITextField!
     @IBOutlet weak var CurrentAmountLB: UILabel!
     @IBOutlet var CurrentAmount: UITextField!
@@ -26,10 +27,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let food = Food()
         food._id = Name.text
         food.count = CurrentAmount.text
-        food.roma = "16.00"
-        food.unit = "test"
-        food.usFoods = "16.00"
-        food.walmartHyvee = "16.00"
         
         store.saveObject(
             food,
@@ -50,6 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Name.text = ""
         CurrentAmount.text = "0"
     }
+<<<<<<< Updated upstream
     
     
     @IBAction func load(sender: AnyObject) {
@@ -69,6 +67,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             }, withProgressBlock: nil)
     }
+=======
+>>>>>>> Stashed changes
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +104,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     let c = r as? Food
                     self.Name?.text = c?._id
                     self.CurrentAmount?.text = c?.count
+                    self.UnitLB?.text = c?.unit
                 }
             }
             }, withProgressBlock: nil)

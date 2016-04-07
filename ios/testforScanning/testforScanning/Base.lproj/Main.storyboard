@@ -76,7 +76,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
                                 <rect key="frame" x="276" y="213" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="09Y-C2-gl3"/>
@@ -85,12 +85,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H02-qO-hfa">
+                                <rect key="frame" x="419" y="218" width="75" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="WEQ-fJ-CJi"/>
+                                    <constraint firstAttribute="height" constant="25" id="oWF-Hk-a6y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="jlE-AA-Qma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Ej-eE-hy3"/>
                             <constraint firstItem="EMi-yb-sZG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9e4-J2-nic"/>
                             <constraint firstItem="EMi-yb-sZG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="FC1-02-Tau"/>
+                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="80" id="Mic-kd-3gq"/>
                             <constraint firstItem="8JC-xY-LCZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OLJ-d7-XbD"/>
+                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="OxV-vv-x3O"/>
                             <constraint firstItem="8JC-xY-LCZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="90" id="Z2J-7g-dqQ"/>
                             <constraint firstItem="Yki-bi-Wri" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="ZaX-T2-PkS"/>
                             <constraint firstItem="eUI-Po-hl1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dtd-XL-hOL"/>
@@ -102,10 +114,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="CurrentAmount" destination="EMi-yb-sZG" id="Xx0-nC-USw"/>
-                        <outlet property="CurrentAmountLB" destination="8JC-xY-LCZ" id="wev-gq-S0G"/>
-                        <outlet property="Name" destination="jlE-AA-Qma" id="oGb-qC-7Jq"/>
-                        <outlet property="NameLB" destination="OOG-80-wrr" id="s11-VN-BD8"/>
+                        <outlet property="CurrentAmount" destination="EMi-yb-sZG" id="Bft-h9-NCj"/>
+                        <outlet property="CurrentAmountLB" destination="8JC-xY-LCZ" id="hjR-Xf-yGg"/>
+                        <outlet property="Name" destination="jlE-AA-Qma" id="ehr-om-YDL"/>
+                        <outlet property="NameLB" destination="OOG-80-wrr" id="pMb-s3-Awx"/>
+                        <outlet property="UnitLB" destination="H02-qO-hfa" id="u78-ZC-WdC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
