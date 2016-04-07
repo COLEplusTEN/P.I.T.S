@@ -21,12 +21,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
         KCSStoreKeyCollectionTemplateClass : Food.self
         ])
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
+        self.Name.becomeFirstResponder()
+        
+    }
+    
 //Submit Button
     @IBAction func submit(sender: AnyObject) {
         
         let food = Food()
         food._id = Name.text
         food.count = CurrentAmount.text
+        
+//        func 
+//        let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 35))
+//        toastLabel.backgroundColor = UIColor.blackColor()
+//        toastLabel.textColor = UIColor.whiteColor()
+//        toastLabel.textAlignment = NSTextAlignment.Center;
+//        self.view.addSubview(toastLabel)
+//        toastLabel.text = "hello man..."
+//        toastLabel.alpha = 1.0
+//        toastLabel.layer.cornerRadius = 10;
+//        toastLabel.clipsToBounds  =  true
         
         store.saveObject(
             food,
@@ -41,43 +60,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             },
             withProgressBlock: nil
         )
-        
+         displayAlertControllerWithTitle("👍 Good Job 👍", message: "Submitted Successfully!")
         //Put focus back on name textfield and clear the text
         self.Name.becomeFirstResponder()
         Name.text = ""
         CurrentAmount.text = "0"
     }
-<<<<<<< Updated upstream
     
-    
-    @IBAction func load(sender: AnyObject) {
-        let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: "lettuce")
-        store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-            for obj in objectsOrNil {
-                print(obj)
-            }
-            
-            if let results = objectsOrNil as? NSArray
-            {
-                for r in results {
-                    let c = r as? Food
-                    self.Name?.text = c?._id
-                    self.CurrentAmount?.text = c?.count
-                }
-            }
-            }, withProgressBlock: nil)
-    }
-=======
->>>>>>> Stashed changes
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
-        self.Name.becomeFirstResponder()
-        
-    }
-    
-    //If the scangun returns, query the database for that object
+        //If the scangun inputs return/enter, automatically query the database for that object
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         var itemName:String = Name.text!
@@ -88,9 +78,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         return true
-        
     }
     
+    //Perform Database query
     func fetchItemFromDatabase(var itemName:String){
         let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: itemName)
         store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
@@ -110,13 +100,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }, withProgressBlock: nil)
     }
     
+    //Display Alert
+    func displayAlertControllerWithTitle(title:String, message:String) {
+        let uiAlertController:UIAlertController = UIAlertController(title: title,
+            message: message, preferredStyle: UIAlertControllerStyle.Alert); uiAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel,
+                handler:{(action:UIAlertAction)->Void in  }))
+        self.presentViewController(uiAlertController, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
     
 }
