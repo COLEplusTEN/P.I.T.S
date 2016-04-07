@@ -23,7 +23,7 @@
    <top>
       <HBox prefHeight="59.0" prefWidth="820.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="35.0" prefWidth="405.0" text="Inventory Counting System" textOverrun="WORD_ELLIPSIS">
+            <Label fx:id="title" prefHeight="35.0" prefWidth="405.0" text="Inventory Counting System" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

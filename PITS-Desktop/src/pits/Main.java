@@ -25,6 +25,8 @@ public class Main extends Application {
 
     public static Stage pStage;
 
+    public static Scene ourScene;
+
     // app secret : 4e43176fdfe14d44878492851d93385f
 
 
@@ -35,7 +37,10 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("Pagliai's Inventory Tracking System");
-        primaryStage.setScene(new Scene(root, 1220, 850));
+
+        ourScene = new Scene(root, 1220,850);
+
+        primaryStage.setScene(ourScene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

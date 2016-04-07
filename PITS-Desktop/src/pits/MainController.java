@@ -2,6 +2,7 @@ package pits;
 
 import com.kinvey.java.model.KinveyDeleteResponse;
 import com.kinvey.nativejava.AppData;
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,10 +50,13 @@ public class MainController implements Initializable{
     @FXML
     Label timeText;
     @FXML
-    public Label statusBar;
+    Label statusBar;
     @FXML
     ImageView refreshImage;
 
+
+
+    private String theme1Url = getClass().getResource("styleSheet.css").toExternalForm();
 
 
     public ObservableList<ItemEntity> list = FXCollections.observableArrayList();
@@ -68,6 +73,7 @@ public class MainController implements Initializable{
 
 
     public MainController() {
+
 
     }
 
@@ -87,12 +93,9 @@ public class MainController implements Initializable{
 
         configureTable();
 
-        searchBar();
+        searchBar(); // search bar has to be called here
 
 
-        /*
-     * This works when the user double clicks on the row twice
-     * */
 
         myTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -121,22 +124,65 @@ public class MainController implements Initializable{
 
     public void statusBar(String str)   {
 
+        statusBar.setVisible(true);
+        statusBar.setText(str);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1500);
+                    // statusBar.setDisable(true);
+                    statusBar.setVisible(false);
+
+                     } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+
+        // System.out.println("scene stylesheets on button 1 click: " + scene.getStylesheets());
+        //if(!scene.getStylesheets().contains(theme1Url)) scene.getStylesheets().add(theme1Url);
+        // System.out.println("scene stylesheets on button 1 click: " + scene.getStylesheets());
+
+
+
+          // Main.ourScene.getStylesheets().add(theme1Url);
+
+
+
+
+
+//
+//        Runnable run = new Runnable() {
+//            public void run() {
+//                try {
+//                    Thread.sleep(5000);
+//                    System.out.println("***** before thread ****");
+//                    statusBar.setText("Inside the thread");
+//                } catch (InterruptedException e) {
+//                    System.out.println(" interrupted");
+//                }
+//                catch(Exception e){
+//                    System.out.println("There was an exception" + e);
+//                }
+//            }
+//        };
+//       new Thread(run).start();
+
+
+
+
+
+
+
         /*
         CSS is called in the Main.fxml : so we do not have to call that anymore !
          */
-
-        ReminderBeep test = new ReminderBeep(4);
-
-
-        String returnedVal  = test.newMethod();
-        statusBar.setText(str);
-
-
-//        if(returnedVal.equals("we were here")){
-//            statusBar.setDisable(true);
-//            statusBar.setVisible(false);
-//        }
-
 
 
         System.out.println("Came back from there");
@@ -238,9 +284,9 @@ public class MainController implements Initializable{
     // when user clicks the refresh image
     public void refresh() {
 
-        refreshImage.requestFocus();
-
         statusBar("Data refreshed !!!");
+
+        refreshImage.requestFocus();
 
         System.out.println("Table Updated !!!");
 
@@ -248,7 +294,6 @@ public class MainController implements Initializable{
 
         updateTable();
 
-        searchBar();
     }
 
 
