@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         KCSStoreKeyCollectionTemplateClass : Food.self
         ])
     
+//Submit Button
     @IBAction func submit(sender: AnyObject) {
         
         let food = Food()
@@ -43,7 +44,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             },
             withProgressBlock: nil
         )
+        
+        //Put focus back on name textfield and clear the text
+        self.Name.becomeFirstResponder()
+        Name.text = ""
+        CurrentAmount.text = "0"
     }
+    
+    
     @IBAction func load(sender: AnyObject) {
         let query:KCSQuery = KCSQuery(onField: "_id", withExactMatchForValue: "lettuce")
         store.queryWithQuery(query, withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
@@ -80,7 +88,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         return true
-        //self.CurrentAmount.becomeFirstResponder()
+        
     }
     
     func fetchItemFromDatabase(var itemName:String){
