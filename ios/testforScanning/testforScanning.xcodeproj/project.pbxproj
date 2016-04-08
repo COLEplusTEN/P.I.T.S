@@ -121,19 +121,7 @@
 		704328D11C65BBA000DFB2D5 = {
 			isa = PBXGroup;
 			children = (
-				390DF0861CB580C000E8EF3B /* QuartzCore.framework */,
-				7056A0361C6FE9E900C2CCE3 /* KinveyKit.framework */,
-				704329381C65CE5800DFB2D5 /* UIKit.framework */,
-				704329361C65CE4700DFB2D5 /* Foundation.framework */,
-				704329341C65CE3300DFB2D5 /* WebKit.framework */,
-				704329321C65CE1E00DFB2D5 /* SystemConfiguration.framework */,
-				704329301C65CDF800DFB2D5 /* Social.framework */,
-				7043292E1C65CDE700DFB2D5 /* Security.framework */,
-				7043292C1C65CA2400DFB2D5 /* MobileCoreServices.framework */,
-				7043292A1C65CA1200DFB2D5 /* libsqlite3.tbd */,
-				704329281C65C9E800DFB2D5 /* CoreLocation.framework */,
-				704329261C65C9D800DFB2D5 /* CoreGraphics.framework */,
-				704329241C65C9AC00DFB2D5 /* Accounts.framework */,
+				CD5C52C71CB849E600DCE4BF /* Kinvey */,
 				704328DC1C65BBA000DFB2D5 /* testforScanning */,
 				704328F11C65BBA100DFB2D5 /* testforScanningTests */,
 				704328FC1C65BBA100DFB2D5 /* testforScanningUITests */,
@@ -183,6 +171,26 @@
 				704328FF1C65BBA100DFB2D5 /* Info.plist */,
 			);
 			path = testforScanningUITests;
+			sourceTree = "<group>";
+		};
+		CD5C52C71CB849E600DCE4BF /* Kinvey */ = {
+			isa = PBXGroup;
+			children = (
+				390DF0861CB580C000E8EF3B /* QuartzCore.framework */,
+				7056A0361C6FE9E900C2CCE3 /* KinveyKit.framework */,
+				704329381C65CE5800DFB2D5 /* UIKit.framework */,
+				704329361C65CE4700DFB2D5 /* Foundation.framework */,
+				704329341C65CE3300DFB2D5 /* WebKit.framework */,
+				704329321C65CE1E00DFB2D5 /* SystemConfiguration.framework */,
+				704329301C65CDF800DFB2D5 /* Social.framework */,
+				7043292E1C65CDE700DFB2D5 /* Security.framework */,
+				7043292C1C65CA2400DFB2D5 /* MobileCoreServices.framework */,
+				7043292A1C65CA1200DFB2D5 /* libsqlite3.tbd */,
+				704329281C65C9E800DFB2D5 /* CoreLocation.framework */,
+				704329261C65C9D800DFB2D5 /* CoreGraphics.framework */,
+				704329241C65C9AC00DFB2D5 /* Accounts.framework */,
+			);
+			name = Kinvey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
