@@ -25,7 +25,7 @@ class Food : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPer
         return [
             "_id" : "_id",
             "count" : "count",
-            "roma" : "roam",
+            "roma" : "roma",
             "unit" : "unit",
             "usFoods":"usFoods",
             "walmartHyvee":"walmartHyvee",

@@ -15,6 +15,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var Name: UITextField!
     @IBOutlet weak var CurrentAmountLB: UILabel!
     @IBOutlet var CurrentAmount: UITextField!
+    var roma:String?
+    var unit:String?
+    var usFoods:String?
+    var walmartHyvee: String?
     
     let store = KCSAppdataStore.storeWithOptions([
         KCSStoreKeyCollectionName : "eventsCollection",
@@ -26,55 +30,56 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
         self.Name.becomeFirstResponder()
-        
     }
     
-//Submit Button
+    //Submit Button
     @IBAction func submit(sender: AnyObject) {
-        
-        let food = Food()
-        food._id = Name.text
-        food.count = CurrentAmount.text
-        
-//        func 
-//        let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 35))
-//        toastLabel.backgroundColor = UIColor.blackColor()
-//        toastLabel.textColor = UIColor.whiteColor()
-//        toastLabel.textAlignment = NSTextAlignment.Center;
-//        self.view.addSubview(toastLabel)
-//        toastLabel.text = "hello man..."
-//        toastLabel.alpha = 1.0
-//        toastLabel.layer.cornerRadius = 10;
-//        toastLabel.clipsToBounds  =  true
-        
-        store.saveObject(
-            food,
-            withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                if errorOrNil != nil {
-                    //save failed
-                    NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
-                } else {
-                    //save was successful
-                    NSLog("Successfully saved event(s).")
-                }
-            },
-            withProgressBlock: nil
-        )
-         displayAlertControllerWithTitle("👍 Good Job 👍", message: "Submitted Successfully!")
-        //Put focus back on name textfield and clear the text
-        self.Name.becomeFirstResponder()
-        Name.text = ""
-        CurrentAmount.text = "0"
+        do{
+            let food = Food()
+            food._id = Name.text
+            food.count = CurrentAmount.text
+            food.roma = self.roma
+            food.unit = UnitLB.text
+            food.usFoods = self.usFoods
+            food.walmartHyvee = self.walmartHyvee
+            
+            store.saveObject(
+                food,
+                withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                    if errorOrNil != nil {
+                        //save failed
+                        NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+                    } else {
+                        //save was successful
+                        NSLog("Successfully saved event(s).")
+                    }
+                },
+                withProgressBlock: nil
+            )
+            //Display success popup
+            self.displayPopupWithTitle("👍 Good Job 👍", message: "Submitted Successfully!", alert:false)
+            var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.dismissViewControllerAnimated(false, completion: nil)
+                self.Name.becomeFirstResponder()
+            })
+            //Put focus back on name textfield and clear the text
+            CurrentAmount.text = "0"
+            Name.text = ""
+        }
+        catch{
+            self.displayPopupWithTitle("Error Uploading", message: "Try entering an item and amount first.", alert:true)
+        }
     }
     
-        //If the scangun inputs return/enter, automatically query the database for that object
+    
+    //If the scangun inputs return/enter, automatically query the database for that object
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         var itemName:String = Name.text!
         fetchItemFromDatabase(itemName)
         if (textField == self.Name) {
             self.CurrentAmount.becomeFirstResponder()
-            
         }
         
         return true
@@ -95,17 +100,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.Name?.text = c?._id
                     self.CurrentAmount?.text = c?.count
                     self.UnitLB?.text = c?.unit
+                    self.roma = c?.roma
+                    self.usFoods = c?.usFoods
+                    self.walmartHyvee = c?.walmartHyvee
                 }
             }
             }, withProgressBlock: nil)
     }
     
-    //Display Alert
-    func displayAlertControllerWithTitle(title:String, message:String) {
-        let uiAlertController:UIAlertController = UIAlertController(title: title,
-            message: message, preferredStyle: UIAlertControllerStyle.Alert); uiAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel,
-                handler:{(action:UIAlertAction)->Void in  }))
-        self.presentViewController(uiAlertController, animated: true, completion: nil)
+    //Display Popup
+    func displayPopupWithTitle(title:String, message:String, alert:Bool) {
+        if(alert == false){
+            let uiAlertController:UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            self.presentViewController(uiAlertController, animated: true, completion: nil)}
+            //if alert == true, display alert instead of popup
+        else{
+            let uiAlertController:UIAlertController = UIAlertController(title: title,
+                message: message, preferredStyle: UIAlertControllerStyle.Alert); uiAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel,
+                    handler:{(action:UIAlertAction)->Void in  }))
+            self.presentViewController(uiAlertController, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
