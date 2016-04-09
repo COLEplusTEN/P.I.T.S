@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var unit:String?
     var usFoods:String?
     var walmartHyvee: String?
+    var numberOfItem:UInt?
+    
     
     let store = KCSAppdataStore.storeWithOptions([
         KCSStoreKeyCollectionName : "eventsCollection",
@@ -34,42 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //Submit Button
     @IBAction func submit(sender: AnyObject) {
-        do{
-            let food = Food()
-            food._id = Name.text
-            food.count = CurrentAmount.text
-            food.roma = self.roma
-            food.unit = UnitLB.text
-            food.usFoods = self.usFoods
-            food.walmartHyvee = self.walmartHyvee
-            
-            store.saveObject(
-                food,
-                withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                    if errorOrNil != nil {
-                        //save failed
-                        NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
-                    } else {
-                        //save was successful
-                        NSLog("Successfully saved event(s).")
-                    }
-                },
-                withProgressBlock: nil
-            )
-            //Display success popup
-            self.displayPopupWithTitle("👍 Good Job 👍", message: "Submitted Successfully!", alert:false)
-            var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                self.dismissViewControllerAnimated(false, completion: nil)
-                self.Name.becomeFirstResponder()
-            })
-            //Put focus back on name textfield and clear the text
-            CurrentAmount.text = "0"
-            Name.text = ""
-        }
-        catch{
-            self.displayPopupWithTitle("Error Uploading", message: "Try entering an item and amount first.", alert:true)
-        }
+            checkItemExistsInDatabase(Name.text!)
     }
     
     
@@ -106,6 +73,55 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             }, withProgressBlock: nil)
+    }
+    
+    func checkItemExistsInDatabase(var itemName:String){
+        let query = KCSQuery(onField: "_id", withExactMatchForValue: itemName)
+        store.countWithQuery(query, completion: { (count: UInt, errorOrNil: NSError!) -> Void in
+            do{
+                self.numberOfItem = count
+            if(self.numberOfItem != 0 && self.numberOfItem != nil){
+                let food = Food()
+                food._id = self.Name.text
+                food.count = self.CurrentAmount.text
+                food.roma = self.roma
+                food.unit = self.UnitLB.text
+                food.usFoods = self.usFoods
+                food.walmartHyvee = self.walmartHyvee
+                self.store.saveObject(
+                    food,
+                    withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                        if errorOrNil != nil {
+                            //save failed
+                            NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+                        } else {
+                            //save was successful
+                            NSLog("Successfully saved event(s).")
+                        }
+                    },
+                    withProgressBlock: nil
+                )
+                //Display success popup
+                self.displayPopupWithTitle("Submitted Succesfully", message: "There are now \(food.count!) \(food.unit!) of \(food._id!) in the database.", alert:false)
+                var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    self.dismissViewControllerAnimated(false, completion: nil)
+                    self.Name.becomeFirstResponder()
+                })
+                //Put focus back on name textfield and clear the text
+                self.CurrentAmount.text = "0"
+                self.Name.text = ""
+            }
+            else{
+                self.displayPopupWithTitle("Error", message: "The item does not exist in the database. Please try again or create the item in the database.", alert: true)
+            }
+            }
+            catch{
+                self.displayPopupWithTitle("Error Uploading", message: "Try entering an item and amount first.", alert:true)
+        }
+            //             var fetchComplete = CACurrentMediaTime();
+            //            print("fetch in progress \(fetchComplete)")
+        })
     }
     
     //Display Popup
