@@ -111,6 +111,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 //Put focus back on name textfield and clear the text
                 self.CurrentAmount.text = "0"
                 self.Name.text = ""
+                self.UnitLB.text = ""
             }
             else{
                 self.displayPopupWithTitle("Error", message: "The item does not exist in the database. Please try again or create the item in the database.", alert: true)
