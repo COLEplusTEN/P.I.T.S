@@ -154,6 +154,7 @@
                         <outlet property="Name" destination="jlE-AA-Qma" id="ehr-om-YDL"/>
                         <outlet property="NameLB" destination="OOG-80-wrr" id="pMb-s3-Awx"/>
                         <outlet property="UnitLB" destination="H02-qO-hfa" id="u78-ZC-WdC"/>
+                        <outlet property="submit" destination="eUI-Po-hl1" id="CBe-Lv-5TT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

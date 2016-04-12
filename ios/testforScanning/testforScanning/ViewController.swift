@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var Name: UITextField!
     @IBOutlet weak var CurrentAmountLB: UILabel!
     @IBOutlet var CurrentAmount: UITextField!
+    @IBOutlet var Submit: UIButton!
     var roma:String?
     var unit:String?
     var usFoods:String?
@@ -32,6 +33,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
         self.Name.becomeFirstResponder()
+        self.Submit.backgroundColor = UIColor.greenColor()
+        
     }
     
     //Submit Button
