@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -17,32 +17,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-xY-LCZ" userLabel="CurrentAmountLabel">
-                                <rect key="frame" x="62" y="155" width="137" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pagliai's Inventory Tracking System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yki-bi-Wri" customClass="UIOutlinedLabel" customModule="testforScanning" customModuleProvider="target">
+                                <rect key="frame" x="116" y="28" width="367" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="137" id="0HA-Gw-9ZP"/>
-                                    <constraint firstAttribute="height" constant="21" id="GxS-2W-g0D"/>
+                                    <constraint firstAttribute="height" constant="300" id="Jkk-Kg-J9j"/>
+                                    <constraint firstAttribute="width" constant="550" id="ZPF-I9-lQ5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outlineWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-80-wrr" userLabel="NameLB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-80-wrr" userLabel="NameLB" customClass="UIOutlinedLabel" customModule="testforScanning" customModuleProvider="target">
                                 <rect key="frame" x="240" y="246" width="120" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="N0X-sf-eiA"/>
-                                    <constraint firstAttribute="width" constant="120" id="ncd-Ga-jYG"/>
+                                    <constraint firstAttribute="height" constant="300" id="N0X-sf-eiA"/>
+                                    <constraint firstAttribute="width" constant="300" id="ncd-Ga-jYG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outlineWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-AA-Qma" userLabel="Name">
+                                <rect key="frame" x="251" y="104" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="lKD-UN-Tjc"/>
+                                    <constraint firstAttribute="height" constant="50" id="yBn-HN-PIM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HyW-tN-xKL"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-xY-LCZ" userLabel="CurrentAmountLabel" customClass="UIOutlinedLabel" customModule="testforScanning" customModuleProvider="target">
+                                <rect key="frame" x="62" y="155" width="137" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0HA-Gw-9ZP"/>
+                                    <constraint firstAttribute="height" constant="300" id="GxS-2W-g0D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outlineWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
+                                <rect key="frame" x="276" y="213" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="09Y-C2-gl3"/>
+                                    <constraint firstAttribute="width" constant="250" id="P79-H7-PAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H02-qO-hfa" customClass="UIOutlinedLabel" customModule="testforScanning" customModuleProvider="target">
+                                <rect key="frame" x="419" y="218" width="75" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="WEQ-fJ-CJi"/>
+                                    <constraint firstAttribute="height" constant="300" id="oWF-Hk-a6y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outlineWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Po-hl1">
                                 <rect key="frame" x="268" y="285" width="63" height="30"/>
                                 <color key="backgroundColor" red="0.93128496408462524" green="0.87351006269454956" blue="0.66365987062454224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Esu-Bw-y01"/>
-                                    <constraint firstAttribute="width" constant="63" id="l93-zg-BuX"/>
+                                    <constraint firstAttribute="height" constant="50" id="Esu-Bw-y01"/>
+                                    <constraint firstAttribute="width" constant="150" id="l93-zg-BuX"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -55,62 +130,22 @@
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ot2-uV-hxd"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-AA-Qma" userLabel="Name">
-                                <rect key="frame" x="251" y="104" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="lKD-UN-Tjc"/>
-                                    <constraint firstAttribute="height" constant="30" id="yBn-HN-PIM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HyW-tN-xKL"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pagliai's Inventory Tracking System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yki-bi-Wri">
-                                <rect key="frame" x="116" y="28" width="367" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="Jkk-Kg-J9j"/>
-                                    <constraint firstAttribute="width" constant="367" id="ZPF-I9-lQ5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-yb-sZG" userLabel="CurrentAmount">
-                                <rect key="frame" x="276" y="213" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="09Y-C2-gl3"/>
-                                    <constraint firstAttribute="width" constant="100" id="P79-H7-PAC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H02-qO-hfa">
-                                <rect key="frame" x="419" y="218" width="75" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="WEQ-fJ-CJi"/>
-                                    <constraint firstAttribute="height" constant="25" id="oWF-Hk-a6y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="jlE-AA-Qma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Ej-eE-hy3"/>
                             <constraint firstItem="EMi-yb-sZG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9e4-J2-nic"/>
-                            <constraint firstItem="EMi-yb-sZG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="FC1-02-Tau"/>
-                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="80" id="Mic-kd-3gq"/>
+                            <constraint firstItem="EMi-yb-sZG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="FC1-02-Tau"/>
+                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="185" id="Mic-kd-3gq"/>
                             <constraint firstItem="8JC-xY-LCZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OLJ-d7-XbD"/>
-                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="OxV-vv-x3O"/>
-                            <constraint firstItem="8JC-xY-LCZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="90" id="Z2J-7g-dqQ"/>
-                            <constraint firstItem="Yki-bi-Wri" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="ZaX-T2-PkS"/>
+                            <constraint firstItem="H02-qO-hfa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="OxV-vv-x3O"/>
+                            <constraint firstItem="8JC-xY-LCZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="Z2J-7g-dqQ"/>
+                            <constraint firstItem="Yki-bi-Wri" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-300" id="ZaX-T2-PkS"/>
                             <constraint firstItem="eUI-Po-hl1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dtd-XL-hOL"/>
-                            <constraint firstItem="jlE-AA-Qma" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="40" id="duM-MM-dvW"/>
+                            <constraint firstItem="jlE-AA-Qma" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-150" id="duM-MM-dvW"/>
                             <constraint firstItem="OOG-80-wrr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i1K-yo-FgZ"/>
-                            <constraint firstItem="OOG-80-wrr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="kNs-KP-bvD"/>
-                            <constraint firstItem="Yki-bi-Wri" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kha-XP-Wpd"/>
-                            <constraint firstItem="eUI-Po-hl1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="lrF-dp-FJF"/>
+                            <constraint firstItem="OOG-80-wrr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-200" id="kNs-KP-bvD"/>
+                            <constraint firstItem="Yki-bi-Wri" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="10" id="kha-XP-Wpd"/>
+                            <constraint firstItem="eUI-Po-hl1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="350" id="lrF-dp-FJF"/>
                         </constraints>
                     </view>
                     <connections>
