@@ -16,6 +16,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var CurrentAmountLB: UILabel!
     @IBOutlet var CurrentAmount: UITextField!
     @IBOutlet var Submit: UIButton!
+    @IBOutlet var one: UIButton!
+    @IBOutlet var two: UIButton!
+    @IBOutlet var three: UIButton!
+    @IBOutlet var four: UIButton!
+    @IBOutlet var five: UIButton!
+    @IBOutlet var six: UIButton!
+    @IBOutlet var seven: UIButton!
+    @IBOutlet var eight: UIButton!
+    @IBOutlet var nine: UIButton!
+    @IBOutlet var zero: UIButton!
+    @IBOutlet var period: UIButton!
+    @IBOutlet var back: UIButton!
     var roma:String?
     var unit:String?
     var usFoods:String?
@@ -50,9 +62,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "ice.jpg")!)
         self.Name.becomeFirstResponder()
-        self.Submit.backgroundColor = UIColor.greenColor()
+        self.Submit.backgroundColor = UIColor.blackColor()
+        self.one.backgroundColor = UIColor.whiteColor()
+        self.two.backgroundColor = UIColor.whiteColor()
+        self.three.backgroundColor = UIColor.whiteColor()
+        self.four.backgroundColor = UIColor.whiteColor()
+        self.five.backgroundColor = UIColor.whiteColor()
+        self.six.backgroundColor = UIColor.whiteColor()
+        self.seven.backgroundColor = UIColor.whiteColor()
+        self.eight.backgroundColor = UIColor.whiteColor()
+        self.nine.backgroundColor = UIColor.whiteColor()
+        self.zero.backgroundColor = UIColor.whiteColor()
+        self.period.backgroundColor = UIColor.whiteColor()
+        self.back.backgroundColor = UIColor.whiteColor()
         
     }
     

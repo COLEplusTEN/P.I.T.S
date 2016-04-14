@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -119,7 +119,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Submit">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -130,88 +130,172 @@
                                     <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ot2-uV-hxd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCg-gc-Htz">
-                                <rect key="frame" x="308" y="170" width="30" height="30"/>
-                                <state key="normal" title="1"/>
-                                <connections>
-                                    <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hpI-kN-vdO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67o-Ru-nmp">
                                 <rect key="frame" x="433" y="172" width="30" height="30"/>
-                                <state key="normal" title="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="96t-qG-1Pr"/>
+                                    <constraint firstAttribute="height" constant="50" id="afI-fe-1CL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="2">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZF-bk-5sl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRX-aG-GNk">
                                 <rect key="frame" x="559" y="172" width="30" height="30"/>
-                                <state key="normal" title="3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8pT-kK-GH2"/>
+                                    <constraint firstAttribute="height" constant="50" id="fDx-Ta-z41"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="3">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uEQ-ND-CvJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKd-Bc-ctd">
                                 <rect key="frame" x="433" y="233" width="30" height="30"/>
-                                <state key="normal" title="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8U8-bC-Xsu"/>
+                                    <constraint firstAttribute="width" constant="100" id="Y9x-TS-f3W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="5">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3II-bO-lfc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-kw-lbX">
                                 <rect key="frame" x="308" y="233" width="30" height="30"/>
-                                <state key="normal" title="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0KE-j1-VKl"/>
+                                    <constraint firstAttribute="height" constant="50" id="c2X-Ux-RQL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="4">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXs-l3-vnE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9F-P1-4R5">
                                 <rect key="frame" x="559" y="233" width="30" height="30"/>
-                                <state key="normal" title="6"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Ku-7j-Zvq"/>
+                                    <constraint firstAttribute="width" constant="100" id="hsE-Wq-fOB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="6">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TFd-zm-PaD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbk-3M-2bE">
                                 <rect key="frame" x="308" y="287" width="30" height="30"/>
-                                <state key="normal" title="7"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8xQ-Lm-pjl"/>
+                                    <constraint firstAttribute="width" constant="100" id="N2l-uO-xPw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="7">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CWj-1K-go7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJu-uV-mbF">
                                 <rect key="frame" x="433" y="287" width="30" height="30"/>
-                                <state key="normal" title="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0kV-nN-8YG"/>
+                                    <constraint firstAttribute="width" constant="100" id="zIt-FB-cKU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="8">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0f1-S3-j2Q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBB-Mh-vDm">
                                 <rect key="frame" x="559" y="287" width="30" height="30"/>
-                                <state key="normal" title="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2dV-nB-ing"/>
+                                    <constraint firstAttribute="height" constant="50" id="o6g-jV-qhs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="9">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7LG-mq-h70"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msw-em-maX">
                                 <rect key="frame" x="316" y="335" width="30" height="30"/>
-                                <state key="normal" title="."/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Ck5-vu-jXr"/>
+                                    <constraint firstAttribute="height" constant="50" id="Zp3-c2-d8B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title=".">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D10-Dt-bpa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kik-br-rmO">
                                 <rect key="frame" x="433" y="335" width="30" height="30"/>
-                                <state key="normal" title="0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IU2-r4-RFZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="dbP-KL-fmV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="0">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tmb-4Y-jUq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzL-ds-hW0">
                                 <rect key="frame" x="557" y="335" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ahf-of-R4x"/>
+                                    <constraint firstAttribute="width" constant="100" id="I2H-ag-zwy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="backspace:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XvQ-vr-UgK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCg-gc-Htz">
+                                <rect key="frame" x="308" y="172" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Jsn-kd-lcf"/>
+                                    <constraint firstAttribute="height" constant="50" id="Yii-L6-rib"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="checknums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hpI-kN-vdO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -261,8 +345,21 @@
                         <outlet property="CurrentAmountLB" destination="8JC-xY-LCZ" id="hjR-Xf-yGg"/>
                         <outlet property="Name" destination="jlE-AA-Qma" id="ehr-om-YDL"/>
                         <outlet property="NameLB" destination="OOG-80-wrr" id="pMb-s3-Awx"/>
+                        <outlet property="Submit" destination="eUI-Po-hl1" id="t9m-sf-2pu"/>
                         <outlet property="UnitLB" destination="H02-qO-hfa" id="u78-ZC-WdC"/>
+                        <outlet property="back" destination="tzL-ds-hW0" id="hni-YR-UWN"/>
+                        <outlet property="eight" destination="dJu-uV-mbF" id="BpM-FC-SRx"/>
+                        <outlet property="five" destination="RKd-Bc-ctd" id="zt8-2D-ow6"/>
+                        <outlet property="four" destination="uiO-kw-lbX" id="Bd9-hu-174"/>
+                        <outlet property="nine" destination="WBB-Mh-vDm" id="joh-LL-kxB"/>
+                        <outlet property="one" destination="eCg-gc-Htz" id="Xa9-LT-fHl"/>
+                        <outlet property="period" destination="Msw-em-maX" id="bzf-QA-kdC"/>
+                        <outlet property="seven" destination="Vbk-3M-2bE" id="8Qw-zT-FXP"/>
+                        <outlet property="six" destination="q9F-P1-4R5" id="lYH-oW-01W"/>
                         <outlet property="submit" destination="eUI-Po-hl1" id="CBe-Lv-5TT"/>
+                        <outlet property="three" destination="WRX-aG-GNk" id="tnS-73-Gp6"/>
+                        <outlet property="two" destination="67o-Ru-nmp" id="l77-Ga-ZUp"/>
+                        <outlet property="zero" destination="Kik-br-rmO" id="Lrg-jd-298"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
