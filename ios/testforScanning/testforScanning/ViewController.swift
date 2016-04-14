@@ -22,11 +22,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var walmartHyvee: String?
     var numberOfItem:UInt?
     
+   
     
     let store = KCSAppdataStore.storeWithOptions([
         KCSStoreKeyCollectionName : "eventsCollection",
         KCSStoreKeyCollectionTemplateClass : Food.self
         ])
+    
+    
+    @IBAction func checknums(sender: AnyObject) {
+        var number = sender.currentTitle
+        CurrentAmount.text = CurrentAmount.text!  + number!!
+        
+        
+    }
+    
+    
+    @IBAction func backspace(sender: AnyObject) {
+        
+        if (CurrentAmount.text!.characters.count != 0) {
+            CurrentAmount.text!.removeAtIndex(CurrentAmount.text!.endIndex.predecessor())
+        
+        }
+        
+    }
     
     
     override func viewDidLoad() {
