@@ -77,6 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.zero.backgroundColor = UIColor.whiteColor()
         self.period.backgroundColor = UIColor.whiteColor()
         self.back.backgroundColor = UIColor.whiteColor()
+        self.CurrentAmount.delegate = self
         
     }
     
@@ -188,6 +189,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool { // return false to not change text
+        switch string {
+        case "0","1","2","3","4","5","6","7","8","9":
+            return true
+        case ".":
+            let array = textField.text?.characters.map { String($0) }
+            var decimalCount = 0
+            for character in array! {
+                if character == "." {
+                    decimalCount++
+                }
+            }
+            if decimalCount == 1 {
+                return false
+            } else {
+                return true
+            }
+        default:
+            let array = string.characters.map { String($0) }
+            if array.count == 0 {
+                return true
+            }
+            return false
+        }
     }
     
 }
