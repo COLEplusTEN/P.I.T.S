@@ -62,9 +62,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "05-01.jpg")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "light_texture.jpg")!)
         self.Name.becomeFirstResponder()
-        self.Submit.backgroundColor = UIColor.blackColor()
+        self.Submit.backgroundColor = UIColor.greenColor()
         self.one.backgroundColor = UIColor.whiteColor()
         self.two.backgroundColor = UIColor.whiteColor()
         self.three.backgroundColor = UIColor.whiteColor()

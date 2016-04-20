@@ -30,6 +30,7 @@
 		704329391C65CE5800DFB2D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704329381C65CE5800DFB2D5 /* UIKit.framework */; };
 		7056A0371C6FE9E900C2CCE3 /* KinveyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7056A0361C6FE9E900C2CCE3 /* KinveyKit.framework */; };
 		706197421C77C64B00B814EF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706197411C77C64B00B814EF /* Entity.swift */; };
+		9AB13A6F1CC7F52B0098FB17 /* light_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AB13A6E1CC7F52B0098FB17 /* light_texture.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		7056A0351C6FDCF900C2CCE3 /* testforScanning-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testforScanning-Bridging-Header.h"; sourceTree = "<group>"; };
 		7056A0361C6FE9E900C2CCE3 /* KinveyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KinveyKit.framework; sourceTree = "<group>"; };
 		706197411C77C64B00B814EF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		9AB13A6E1CC7F52B0098FB17 /* light_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = light_texture.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		704328DC1C65BBA000DFB2D5 /* testforScanning */ = {
 			isa = PBXGroup;
 			children = (
+				9AB13A6E1CC7F52B0098FB17 /* light_texture.jpg */,
 				59F0D1161CADDC960087BD94 /* 05-01.jpg */,
 				704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */,
 				706197411C77C64B00B814EF /* Entity.swift */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				704328E81C65BBA100DFB2D5 /* LaunchScreen.storyboard in Resources */,
+				9AB13A6F1CC7F52B0098FB17 /* light_texture.jpg in Resources */,
 				704328E51C65BBA100DFB2D5 /* Assets.xcassets in Resources */,
 				704328E31C65BBA100DFB2D5 /* Main.storyboard in Resources */,
 				59F0D1171CADDC960087BD94 /* 05-01.jpg in Resources */,
