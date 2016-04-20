@@ -10,8 +10,6 @@
 		390DF0871CB580C000E8EF3B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390DF0861CB580C000E8EF3B /* QuartzCore.framework */; };
 		39AA48D71C8A1A7000A2A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704328DF1C65BBA000DFB2D5 /* ViewController.swift */; };
 		39B9C66C1CBD557A00BC28B6 /* UIOutlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9C66B1CBD557A00BC28B6 /* UIOutlinedLabel.swift */; };
-		39B9C6AC1CC0475900BC28B6 /* ice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39B9C6AB1CC0475900BC28B6 /* ice.jpg */; };
-		39B9C6AE1CC0499C00BC28B6 /* batman_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39B9C6AD1CC0499C00BC28B6 /* batman_logo.jpg */; };
 		59F0D1171CADDC960087BD94 /* 05-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59F0D1161CADDC960087BD94 /* 05-01.jpg */; };
 		704328DE1C65BBA000DFB2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */; };
 		704328E31C65BBA100DFB2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704328E11C65BBA100DFB2D5 /* Main.storyboard */; };
@@ -54,20 +52,18 @@
 /* Begin PBXFileReference section */
 		390DF0861CB580C000E8EF3B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		39B9C66B1CBD557A00BC28B6 /* UIOutlinedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOutlinedLabel.swift; sourceTree = "<group>"; };
-		39B9C6AB1CC0475900BC28B6 /* ice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ice.jpg; sourceTree = "<group>"; };
-		39B9C6AD1CC0499C00BC28B6 /* batman_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = batman_logo.jpg; sourceTree = "<group>"; };
 		59F0D1161CADDC960087BD94 /* 05-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "05-01.jpg"; sourceTree = "<group>"; };
-		704328DA1C65BBA000DFB2D5 /* testforScanning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testforScanning.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		704328DA1C65BBA000DFB2D5 /* P.I.T.S.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P.I.T.S.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		704328DF1C65BBA000DFB2D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		704328E21C65BBA100DFB2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		704328E41C65BBA100DFB2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		704328E71C65BBA100DFB2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		704328E91C65BBA100DFB2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		704328EE1C65BBA100DFB2D5 /* testforScanningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testforScanningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		704328EE1C65BBA100DFB2D5 /* P.I.T.S.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P.I.T.S.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		704328F21C65BBA100DFB2D5 /* testforScanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testforScanningTests.swift; sourceTree = "<group>"; };
 		704328F41C65BBA100DFB2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		704328F91C65BBA100DFB2D5 /* testforScanningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testforScanningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		704328F91C65BBA100DFB2D5 /* P.I.T.S.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P.I.T.S.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		704328FD1C65BBA100DFB2D5 /* testforScanningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testforScanningUITests.swift; sourceTree = "<group>"; };
 		704328FF1C65BBA100DFB2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704329241C65C9AC00DFB2D5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -138,9 +134,9 @@
 		704328DB1C65BBA000DFB2D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				704328DA1C65BBA000DFB2D5 /* testforScanning.app */,
-				704328EE1C65BBA100DFB2D5 /* testforScanningTests.xctest */,
-				704328F91C65BBA100DFB2D5 /* testforScanningUITests.xctest */,
+				704328DA1C65BBA000DFB2D5 /* P.I.T.S.app */,
+				704328EE1C65BBA100DFB2D5 /* P.I.T.S.xctest */,
+				704328F91C65BBA100DFB2D5 /* P.I.T.S.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,8 +144,6 @@
 		704328DC1C65BBA000DFB2D5 /* testforScanning */ = {
 			isa = PBXGroup;
 			children = (
-				39B9C6AD1CC0499C00BC28B6 /* batman_logo.jpg */,
-				39B9C6AB1CC0475900BC28B6 /* ice.jpg */,
 				59F0D1161CADDC960087BD94 /* 05-01.jpg */,
 				704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */,
 				706197411C77C64B00B814EF /* Entity.swift */,
@@ -205,9 +199,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		704328D91C65BBA000DFB2D5 /* testforScanning */ = {
+		704328D91C65BBA000DFB2D5 /* P.I.T.S */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 704329021C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanning" */;
+			buildConfigurationList = 704329021C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.S" */;
 			buildPhases = (
 				704328D61C65BBA000DFB2D5 /* Sources */,
 				704328D71C65BBA000DFB2D5 /* Frameworks */,
@@ -217,14 +211,14 @@
 			);
 			dependencies = (
 			);
-			name = testforScanning;
+			name = P.I.T.S;
 			productName = testforScanning;
-			productReference = 704328DA1C65BBA000DFB2D5 /* testforScanning.app */;
+			productReference = 704328DA1C65BBA000DFB2D5 /* P.I.T.S.app */;
 			productType = "com.apple.product-type.application";
 		};
-		704328ED1C65BBA100DFB2D5 /* testforScanningTests */ = {
+		704328ED1C65BBA100DFB2D5 /* P.I.T.STests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 704329051C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanningTests" */;
+			buildConfigurationList = 704329051C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.STests" */;
 			buildPhases = (
 				704328EA1C65BBA100DFB2D5 /* Sources */,
 				704328EB1C65BBA100DFB2D5 /* Frameworks */,
@@ -235,14 +229,14 @@
 			dependencies = (
 				704328F01C65BBA100DFB2D5 /* PBXTargetDependency */,
 			);
-			name = testforScanningTests;
+			name = P.I.T.STests;
 			productName = testforScanningTests;
-			productReference = 704328EE1C65BBA100DFB2D5 /* testforScanningTests.xctest */;
+			productReference = 704328EE1C65BBA100DFB2D5 /* P.I.T.S.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		704328F81C65BBA100DFB2D5 /* testforScanningUITests */ = {
+		704328F81C65BBA100DFB2D5 /* P.I.T.SUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 704329081C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanningUITests" */;
+			buildConfigurationList = 704329081C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.SUITests" */;
 			buildPhases = (
 				704328F51C65BBA100DFB2D5 /* Sources */,
 				704328F61C65BBA100DFB2D5 /* Frameworks */,
@@ -253,9 +247,9 @@
 			dependencies = (
 				704328FB1C65BBA100DFB2D5 /* PBXTargetDependency */,
 			);
-			name = testforScanningUITests;
+			name = P.I.T.SUITests;
 			productName = testforScanningUITests;
-			productReference = 704328F91C65BBA100DFB2D5 /* testforScanningUITests.xctest */;
+			productReference = 704328F91C65BBA100DFB2D5 /* P.I.T.S.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 704328D51C65BBA000DFB2D5 /* Build configuration list for PBXProject "testforScanning" */;
+			buildConfigurationList = 704328D51C65BBA000DFB2D5 /* Build configuration list for PBXProject "P.I.T.S" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -295,9 +289,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				704328D91C65BBA000DFB2D5 /* testforScanning */,
-				704328ED1C65BBA100DFB2D5 /* testforScanningTests */,
-				704328F81C65BBA100DFB2D5 /* testforScanningUITests */,
+				704328D91C65BBA000DFB2D5 /* P.I.T.S */,
+				704328ED1C65BBA100DFB2D5 /* P.I.T.STests */,
+				704328F81C65BBA100DFB2D5 /* P.I.T.SUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -308,9 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				704328E81C65BBA100DFB2D5 /* LaunchScreen.storyboard in Resources */,
-				39B9C6AE1CC0499C00BC28B6 /* batman_logo.jpg in Resources */,
 				704328E51C65BBA100DFB2D5 /* Assets.xcassets in Resources */,
-				39B9C6AC1CC0475900BC28B6 /* ice.jpg in Resources */,
 				704328E31C65BBA100DFB2D5 /* Main.storyboard in Resources */,
 				59F0D1171CADDC960087BD94 /* 05-01.jpg in Resources */,
 			);
@@ -365,12 +357,12 @@
 /* Begin PBXTargetDependency section */
 		704328F01C65BBA100DFB2D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 704328D91C65BBA000DFB2D5 /* testforScanning */;
+			target = 704328D91C65BBA000DFB2D5 /* P.I.T.S */;
 			targetProxy = 704328EF1C65BBA100DFB2D5 /* PBXContainerItemProxy */;
 		};
 		704328FB1C65BBA100DFB2D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 704328D91C65BBA000DFB2D5 /* testforScanning */;
+			target = 704328D91C65BBA000DFB2D5 /* P.I.T.S */;
 			targetProxy = 704328FA1C65BBA100DFB2D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -497,7 +489,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanning;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = P.I.T.S;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "testforScanning/testforScanning-Bridging-Header.h";
 			};
@@ -518,7 +510,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanning;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = P.I.T.S;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "testforScanning/testforScanning-Bridging-Header.h";
 			};
@@ -531,8 +523,8 @@
 				INFOPLIST_FILE = testforScanningTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanningTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testforScanning.app/testforScanning";
+				PRODUCT_NAME = P.I.T.S;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/P.I.T.S.app/P.I.T.S";
 			};
 			name = Debug;
 		};
@@ -543,8 +535,8 @@
 				INFOPLIST_FILE = testforScanningTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanningTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testforScanning.app/testforScanning";
+				PRODUCT_NAME = P.I.T.S;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/P.I.T.S.app/P.I.T.S";
 			};
 			name = Release;
 		};
@@ -554,7 +546,7 @@
 				INFOPLIST_FILE = testforScanningUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanningUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = P.I.T.S;
 				TEST_TARGET_NAME = testforScanning;
 				USES_XCTRUNNER = YES;
 			};
@@ -566,7 +558,7 @@
 				INFOPLIST_FILE = testforScanningUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.testforScanningUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = P.I.T.S;
 				TEST_TARGET_NAME = testforScanning;
 				USES_XCTRUNNER = YES;
 			};
@@ -575,7 +567,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		704328D51C65BBA000DFB2D5 /* Build configuration list for PBXProject "testforScanning" */ = {
+		704328D51C65BBA000DFB2D5 /* Build configuration list for PBXProject "P.I.T.S" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				704329001C65BBA100DFB2D5 /* Debug */,
@@ -584,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		704329021C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanning" */ = {
+		704329021C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.S" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				704329031C65BBA100DFB2D5 /* Debug */,
@@ -593,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		704329051C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanningTests" */ = {
+		704329051C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.STests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				704329061C65BBA100DFB2D5 /* Debug */,
@@ -602,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		704329081C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "testforScanningUITests" */ = {
+		704329081C65BBA100DFB2D5 /* Build configuration list for PBXNativeTarget "P.I.T.SUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				704329091C65BBA100DFB2D5 /* Debug */,
