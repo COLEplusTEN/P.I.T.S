@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var NameLB: UILabel!
     @IBOutlet weak var UnitLB: UILabel!
     @IBOutlet var Name: UITextField!
@@ -62,7 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "light_texture.jpg")!)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "tropical-forest3.png")!)
         self.Name.becomeFirstResponder()
         self.one.backgroundColor = UIColor.whiteColor()
         self.two.backgroundColor = UIColor.whiteColor()

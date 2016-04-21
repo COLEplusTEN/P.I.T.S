@@ -356,7 +356,6 @@
                         <outlet property="period" destination="Msw-em-maX" id="bzf-QA-kdC"/>
                         <outlet property="seven" destination="Vbk-3M-2bE" id="8Qw-zT-FXP"/>
                         <outlet property="six" destination="q9F-P1-4R5" id="lYH-oW-01W"/>
-                        <outlet property="submit" destination="eUI-Po-hl1" id="CBe-Lv-5TT"/>
                         <outlet property="three" destination="WRX-aG-GNk" id="tnS-73-Gp6"/>
                         <outlet property="two" destination="67o-Ru-nmp" id="l77-Ga-ZUp"/>
                         <outlet property="zero" destination="Kik-br-rmO" id="Lrg-jd-298"/>

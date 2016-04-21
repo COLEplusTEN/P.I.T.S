@@ -10,6 +10,9 @@
 		390DF0871CB580C000E8EF3B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390DF0861CB580C000E8EF3B /* QuartzCore.framework */; };
 		39AA48D71C8A1A7000A2A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704328DF1C65BBA000DFB2D5 /* ViewController.swift */; };
 		39B9C66C1CBD557A00BC28B6 /* UIOutlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9C66B1CBD557A00BC28B6 /* UIOutlinedLabel.swift */; };
+		59A3903F1CC96F43000DA7CF /* tropical-forest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59A3903E1CC96F43000DA7CF /* tropical-forest.jpg */; };
+		59A390411CC974E7000DA7CF /* tropical-forest2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 59A390401CC974E7000DA7CF /* tropical-forest2.jpg */; };
+		59A390431CC9758C000DA7CF /* tropical-forest3.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A390421CC9758C000DA7CF /* tropical-forest3.png */; };
 		704328DE1C65BBA000DFB2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */; };
 		704328E31C65BBA100DFB2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704328E11C65BBA100DFB2D5 /* Main.storyboard */; };
 		704328E51C65BBA100DFB2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 704328E41C65BBA100DFB2D5 /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		390DF0861CB580C000E8EF3B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		39B9C66B1CBD557A00BC28B6 /* UIOutlinedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOutlinedLabel.swift; sourceTree = "<group>"; };
+		59A3903E1CC96F43000DA7CF /* tropical-forest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tropical-forest.jpg"; sourceTree = "<group>"; };
+		59A390401CC974E7000DA7CF /* tropical-forest2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tropical-forest2.jpg"; sourceTree = "<group>"; };
+		59A390421CC9758C000DA7CF /* tropical-forest3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tropical-forest3.png"; sourceTree = "<group>"; };
 		704328DA1C65BBA000DFB2D5 /* P.I.T.S.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P.I.T.S.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		704328DF1C65BBA000DFB2D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				9AB13A6E1CC7F52B0098FB17 /* light_texture.jpg */,
+				59A390401CC974E7000DA7CF /* tropical-forest2.jpg */,
+				59A390421CC9758C000DA7CF /* tropical-forest3.png */,
+				59A3903E1CC96F43000DA7CF /* tropical-forest.jpg */,
 				704328DD1C65BBA000DFB2D5 /* AppDelegate.swift */,
 				706197411C77C64B00B814EF /* Entity.swift */,
 				704328DF1C65BBA000DFB2D5 /* ViewController.swift */,
@@ -302,9 +311,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				704328E81C65BBA100DFB2D5 /* LaunchScreen.storyboard in Resources */,
+				59A390411CC974E7000DA7CF /* tropical-forest2.jpg in Resources */,
 				9AB13A6F1CC7F52B0098FB17 /* light_texture.jpg in Resources */,
+				59A390431CC9758C000DA7CF /* tropical-forest3.png in Resources */,
 				704328E51C65BBA100DFB2D5 /* Assets.xcassets in Resources */,
 				704328E31C65BBA100DFB2D5 /* Main.storyboard in Resources */,
+				59A3903F1CC96F43000DA7CF /* tropical-forest.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
