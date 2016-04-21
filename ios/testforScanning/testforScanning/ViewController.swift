@@ -64,7 +64,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "light_texture.jpg")!)
         self.Name.becomeFirstResponder()
-        self.Submit.backgroundColor = UIColor.greenColor()
         self.one.backgroundColor = UIColor.whiteColor()
         self.two.backgroundColor = UIColor.whiteColor()
         self.three.backgroundColor = UIColor.whiteColor()
@@ -192,6 +191,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool { // return false to not change text
+        
+        if (textField == CurrentAmount){
         switch string {
         case "0","1","2","3","4","5","6","7","8","9":
             return true
@@ -214,6 +215,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 return true
             }
             return false
+        }
+        }
+        else {
+            return true
+
         }
     }
     

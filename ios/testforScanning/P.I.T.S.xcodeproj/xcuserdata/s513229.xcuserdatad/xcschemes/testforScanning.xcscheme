@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "704328D91C65BBA000DFB2D5"
-            BuildableName = "testforScanning.app"
-            BlueprintName = "testforScanning"
-            ReferencedContainer = "container:testforScanning.xcodeproj">
+            BuildableName = "P.I.T.S.app"
+            BlueprintName = "P.I.T.S"
+            ReferencedContainer = "container:P.I.T.S.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "704328D91C65BBA000DFB2D5"
-            BuildableName = "testforScanning.app"
-            BlueprintName = "testforScanning"
-            ReferencedContainer = "container:testforScanning.xcodeproj">
+            BuildableName = "P.I.T.S.app"
+            BlueprintName = "P.I.T.S"
+            ReferencedContainer = "container:P.I.T.S.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
