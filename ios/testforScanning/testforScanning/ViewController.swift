@@ -44,8 +44,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func checknums(sender: AnyObject) {
+        if (sender.currentTitle!! == "." && CurrentAmount.text!.containsString(".") == true) {
+            
+        }
+        else {
         var number = sender.currentTitle
         CurrentAmount.text = CurrentAmount.text!  + number!!
+        }
         
         
     }
